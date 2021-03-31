@@ -1,27 +1,56 @@
-import Button from 'react-bootstrap/Button';
-import logo from './logo.svg';
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+// REDUX
+import { connect } from 'react-redux'
+import { getUser } from './redux/actions/userActions'
+// COMPONENTS
+import Home from "./components/Home"
+import Login from "./components/Login"
+ import Profile from "./components/Profile"
+// CSS
 import './App.css';
+// SERVICES
+import { clearToken, getToken } from './services/localStorage'
+class App extends React.Component{
+   
+  
+  handleLogout = () => {
+    clearToken()
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Button/>   
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  componentDidMount() {
+    this.props.getUser()
+  }
+  
+  render() {
+    return (
+      <Router>
+      <div className="App">
+
+      <Switch>
+
+      <Route exact path="/" render={() => <Home />} />
+
+      <Route path="/login" render={routerProps => <Login {...routerProps} />} />
+
+      <Route path="/Signup" render={() => <Profile />} />
+
+      </Switch>
+
+      {getToken() ? <button onClick={this.handleLogout}>Logout</button> : null}
+
+      </div>
+      </Router>
+    );
+  }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    getUser: () => dispatch(getUser())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App)
+
+
