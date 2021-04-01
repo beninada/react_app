@@ -6,52 +6,65 @@ import React, { Component } from 'react';
 class Expenses extends Component {
     
     state = {
-        Type: '',
-        amount: '',
+        income:'',
+        typeOfExpense: '',
+        price: '',
         budget: ''
     }
 
-    handleChangeType= event =>{
-        this.setState({[event.target.type]: event.target.value})
+
+    handleChangeIncome= event=>{
+        this.setState({income: event.target.value})
     }
 
-    handleChangeAmount= event=>{
-        this.setState({[event.target.amountAvailable]:event.target.value})
+    handleChangeTypeOfExpense= event =>{
+        this.setState({typeOfExpense: event.target.value})
+    }
+
+    handleChangePrice= event=>{
+        this.setState({price:event.target.value})
     }
 
     handleChangeBudget= event=>{
-        this.setState({[event.target.budget]:event.target.value})
+        this.setState({budget:event.target.value})
     }
     
     handleSubmit(event){
         alert(`A ${this.state} was submitted: ` + this.state);
         event.preventDefault()
-        const {name, amount, budget} = this.state
+        const {income, typeOfExpense, price, budget} = this.state
     }
     
     render() {
         return (
-                <form onSubmit={this.handleSubmit}>
-                    <h1>EXPENSE TRACKER:</h1>
-                    <label>Type:
-                     <textarea value={this.state.type} onChange={this.handleChangeType}/>
-                       <label>Amount:
-                             <textarea value={this.state.amount} onChange={this.handleChangeAmount}/>
-                         <label>Budget:
-                                <textarea value={this.state.budget} onChange={this.handleChangeBudget}/>
-                            </label>
-                        </label> 
-                    </label>
-                 
-                  <input type="submit" value="Submit"/>
-                </form>
-       
-            );
-        }
+            <form onSubmit={this.handleSubmit}>
+                <h1>EXPENSE TRACKER:</h1>
+                <label>Type of Expense:
+                <textarea value={this.state.typeOfExpense} onChange={this.handleChangeTypeOfExpense}/>
+                </label> 
+                <label>price:
+                <textarea value={this.state.price} onChange={this.handleChangePrice}/>
+                </label> 
+                <label>Budget:
+                <textarea value={this.state.budget} onChange={this.handleChangeBudget}/>
+                </label>
 
+                <label>Income:
+                <textarea value={this.state.income} onChange={this.handleChangeIncome}/>
+                </label>
+
+                 <input type="submit" value="Submit"/>
+            </form>
+       
+        );
     }
+
+}
 
 export default(Expenses)
 
+// do mapstatetoprops 
+// dispatch
+// make a fetch with the variable's values 
 
 

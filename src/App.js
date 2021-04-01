@@ -17,6 +17,7 @@ class App extends React.Component{
   
   handleLogout = () => {
     clearToken()
+    this.props.clearUser()
   }
 
   componentDidMount() {
@@ -40,7 +41,7 @@ class App extends React.Component{
 
       </Switch>
 
-      {getToken() ? <button onClick={this.handleLogout}>Logout</button> : null}
+      {this.props.user.username ? <button onClick={this.handleLogout}>Logout</button> : null}
 
       </div>
       </Router>
@@ -50,10 +51,11 @@ class App extends React.Component{
 
 const mapDispatchToProps = dispatch => {
   return {
-    getUser: () => dispatch(getUser())
+    getUser: () => dispatch(getUser()),
+    clearUser: () => dispatch({type: "CLEAR_USER"})
   }
 }
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(state => state, mapDispatchToProps)(App)
 
 
