@@ -5,20 +5,29 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import Expenses from './Expenses'
 
+
 class Profile extends React.Component {
 
 
 
 
+handleOnClick = () =>{
+  
+}
+
   render() {
       console.log(getToken())
     return (
+      
+
       <div>
+     
          {!getToken() ? <Redirect to="/login" /> : null}
 
          {this.props.user.username ? <h1>{this.props.user.username}'s Profile</h1> : <h1>Loading...</h1>}
 
-          <link to="/Expenses"/>
+        
+        
       </div>
     )
   }

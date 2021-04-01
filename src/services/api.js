@@ -4,7 +4,7 @@ const usersURL = URL + 'users'
 const parseJSON = res => res.json()
 
 const authHeaders = () => ({
-  Authorization: `Bearer ${localStorage.getItem('jwt')}`
+  'Authorization': `Bearer ${localStorage.getItem('jwt')}`
 })
 
 const loginHeaders = {
@@ -21,9 +21,9 @@ export function authRequest(credentials) {
   .then(parseJSON)
 }
 
-export function signupRequest() {
+export function profileRequest() {
   console.log(authHeaders())
-  return fetch(URL + 'signup', {
+  return fetch(URL + 'profile', {
     headers: authHeaders()
   })
   .then(parseJSON)

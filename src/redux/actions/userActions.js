@@ -1,9 +1,9 @@
-import { signupRequest } from '../../services/api'
+import  { profileRequest } from '../../services/api'
 
 
 export const getUser = () => {
   return (dispatch) => {
-    signupRequest().then(response => {
+      profileRequest().then(response => {
       dispatch({type: 'SET_USER', payload: response})
     })
   }

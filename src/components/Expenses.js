@@ -6,51 +6,45 @@ import React, { Component } from 'react';
 class Expenses extends Component {
     
     state = {
-        name: '',
+        Type: '',
         amount: '',
-        date: ''
+        budget: ''
     }
 
-    getDate() {
-        let date = { currentTime: new Date().toLocaleString() };
+    handleChangeType= event =>{
+        this.setState({[event.target.type]: event.target.value})
+    }
+
+    handleChangeAmount= event=>{
+        this.setState({[event.target.amountAvailable]:event.target.value})
+    }
+
+    handleChangeBudget= event=>{
+        this.setState({[event.target.budget]:event.target.value})
+    }
     
-        this.setState({
-          date: date
-        });
-    }
-
-    handleChange(event){
-        this.setState(event.target.value)
-    }
-
     handleSubmit(event){
         alert(`A ${this.state} was submitted: ` + this.state);
         event.preventDefault()
-        const {name, amount, date} = this.state
+        const {name, amount, budget} = this.state
     }
     
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>Name:
-                    <textarea value={this.state} onChange={this.handleChange}/>
-                    <label>Amount:
-                            <textarea value={this.state} onChange={this.handleChange}/>
-                
-
-                        <label>date:
-                        
-                         <textarea value={this.state.date} onChange={this.handleChange}/>
-                            
-
-                
-                            <input type="submit" value="Submit"/>
-                        </label>
-
-                    </label> 
-
-                </label>
-             </form>
+                <form onSubmit={this.handleSubmit}>
+                    <h1>EXPENSE TRACKER:</h1>
+                    <label>Type:
+                     <textarea value={this.state.type} onChange={this.handleChangeType}/>
+                       <label>Amount:
+                             <textarea value={this.state.amount} onChange={this.handleChangeAmount}/>
+                         <label>Budget:
+                                <textarea value={this.state.budget} onChange={this.handleChangeBudget}/>
+                            </label>
+                        </label> 
+                    </label>
+                 
+                  <input type="submit" value="Submit"/>
+                </form>
        
             );
         }
