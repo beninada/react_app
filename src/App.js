@@ -7,6 +7,7 @@ import { getUser } from './redux/actions/userActions'
 import Home from "./components/Home"
 import Login from "./components/Login"
  import Profile from "./components/Profile"
+ import Expenses from "./components/Expenses"
 // CSS
 import './App.css';
 // SERVICES
@@ -29,11 +30,13 @@ class App extends React.Component{
 
       <Switch>
 
-      <Route exact path="/" render={() => <Home />} />
+      <Route exact path="/" render={routerProps => <Home {...routerProps}/>} />
 
       <Route path="/login" render={routerProps => <Login {...routerProps} />} />
 
-      <Route path="/Signup" render={() => <Profile />} />
+      <Route path="/profile" render={() => <Profile />} />
+
+      <Route path="/expenses" render={() => <Expenses />} />
 
       </Switch>
 

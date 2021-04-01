@@ -16,7 +16,7 @@ export function authRequest(credentials) {
   return fetch(URL + 'login', {
     method: "POST",
     headers: loginHeaders,
-    body: JSON.stringify(credentials)
+    body: JSON.stringify({user: credentials})
   })
   .then(parseJSON)
 }

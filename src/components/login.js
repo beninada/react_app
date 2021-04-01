@@ -20,9 +20,9 @@ class Login extends React.Component {
         this.setState({message: res.error})
       } else {
         localStorage.setItem('jwt', res.jwt)
-        console.log(localStorage)
+        console.log(this.props)
 
-        this.props.history.push('/Signup')
+        this.props.history.push('/profile')
       }
     })
   }
@@ -41,8 +41,8 @@ class Login extends React.Component {
 
         <form onSubmit={this.handleSubmit}>
 
-          <p style={{color: 'blue'}}>{this.state.message}</p>
-
+          <p style={{color: 'pink'}}>{this.state.message}</p>
+            <h3>PLEASE LOGIN:</h3>
           <input type="text"
           name="username"
           onChange={this.handleChangeUsername}
@@ -72,4 +72,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(state => state, mapDispatchToProps)(Login)

@@ -1,5 +1,5 @@
 export const getToken = () => {
-    localStorage.getItem('jwt')
+   return localStorage.getItem('jwt') 
   }
   
   export const setToken = token => {
