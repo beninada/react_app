@@ -8,10 +8,12 @@ import Home from "./components/Home"
 import Login from "./components/Login"
  import Profile from "./components/Profile"
  import Expenses from "./components/Expenses"
+ import ExpensesTable from "./components/ExpensesTable"
 // CSS
 import './App.css';
 // SERVICES
 import { clearToken, getToken } from './services/localStorage'
+
 class App extends React.Component{
    
   
@@ -37,7 +39,9 @@ class App extends React.Component{
 
       <Route path="/profile" render={() => <Profile />} />
 
-      <Route path="/expenses" render={() => <Expenses />} />
+      <Route exact path="/expenses" render={() => <Expenses />} />
+
+      <Route path="/expenses/expensesTable" render={() => <ExpensesTable/>}/>
 
       </Switch>
 

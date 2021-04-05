@@ -1,6 +1,6 @@
 const expenseReducer = (state = [], action) => {
     switch (action.type){
-        case "SET_USER":
+        case "SET_EXPENSE":
         return action.payload.expense || state
         case "ADD_EXPENSE":
             return [...state,action.payload]

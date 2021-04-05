@@ -1,13 +1,14 @@
 import React from 'react'
-import { getUser } from '../redux/actions/userActions'
+// import { getUser } from '../redux/actions/userActions'
 import { connect } from 'react-redux'
  import { getToken } from '../services/localStorage'
 import { Redirect } from 'react-router-dom'
-import Expenses from './Expenses'
+
 
 
 class Profile extends React.Component {
 
+// create NAV BAR FOR expenses/ expenses table
 
 
 
