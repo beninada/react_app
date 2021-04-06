@@ -35,7 +35,7 @@ class Expenses extends Component {
     
     handleSubmit = (event) =>{
         event.preventDefault()
-        alert(`A ${this.state.items[0]} was submitted: ` + this.state.items);
+        alert(`A ${this.state[0]} was submitted: ` + this.state);
         ExpenseRequest(this.props.user.id)
         const {income, typeOfExpense, price, budget} = this.state
         let items = [...this.state.items][0]
@@ -44,9 +44,8 @@ class Expenses extends Component {
             typeOfExpense: this.state.typeOfExpense,
             price: this.state.price,
             budget: this.state.budget
-            
         })
-        
+        this.setState({income: '', typeOfExpense:'',price:'',budget:''})
        
     }
    
