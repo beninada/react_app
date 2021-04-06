@@ -7,3 +7,13 @@ export const getExpense = () => {
       })
     }
   }
+
+  // remove 
+
+  export const removeExpense = () => {
+    return (dispatch) => {
+        ExpenseRequest().then(response => {
+        dispatch({type: 'REMOVE_EXPENSE', payload: response})
+      })
+    }
+  }

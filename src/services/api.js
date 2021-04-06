@@ -53,6 +53,12 @@ export function expenseTableRequest(user_id){
   .then(parseJSON)
 }
 
-export function deleteExpense(){
-  return 
+export function deleteExpense(user_id){
+  return fetch(URL + `users/${user_id}/expensesTable/DELETE`),{
+    method: "DELETE",
+    headers: ExpenseHeaders(),
+    body: JSON.stringify()
+
+  }
+  .then(parseJSON)
 }

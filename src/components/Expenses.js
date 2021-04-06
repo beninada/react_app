@@ -59,8 +59,9 @@ class Expenses extends Component {
          
         getComponent = () =>{
             if (this.state.showTable){
-                console.log(this.state.showTable)
-                return <ExpensesTable/>;
+                console.log(this.state.items)
+                return <ExpensesTable items = {this.state.items}/>;
+               
             }else {
                 return null;
             }
@@ -69,7 +70,9 @@ class Expenses extends Component {
    
     
     render() {
+
         return (
+           
             <>
             <form onSubmit={this.handleSubmit}>
                 <h1>EXPENSE TRACKER:</h1>
@@ -97,6 +100,7 @@ class Expenses extends Component {
             <button onClick={this.handleClick}>Show Table</button>
             <span>{this.getComponent()}</span>
             <button onClick={this.removeExpense}>REMOVE</button>
+            
             </div>
             </>
         );

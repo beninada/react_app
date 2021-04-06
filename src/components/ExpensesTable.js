@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Expenses from './Expenses'
+import Table from 'react-bootstrap/Table'
+
 
 
 class ExpensesTable extends Component{
-
+   
    
      render(){
-       let items = this.props.state
-       
-        return(
-        
+        const items =  this.props.items
+       return(
             <div id="ExpensesTable">
-                <table>
+                <Table>
                 <tbody>
                     <tr>
-                        {this.props.state.items.map(item => {
+                       {this.props.items.map(item => {
                             return (
                                 <tr>
                                 <th><h1>Income:</h1></th>
@@ -27,12 +27,13 @@ class ExpensesTable extends Component{
                                 <th><h1>Budget:</h1></th>
                                 <td>{item.budget}</td>
                                 </tr>
+                                
                                 );
                             })}
                     </tr>
                 </tbody>
 
-                </table>
+                </Table>
 
             </div>
         );
@@ -41,6 +42,7 @@ class ExpensesTable extends Component{
 
 
 }
+
 
 const mapDispatchToProps= dispatch =>{
     return {
