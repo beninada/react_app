@@ -6,10 +6,12 @@ import Table from 'react-bootstrap/Table'
 
 
 class ExpensesTable extends Component{
+
    
-   
+      
      render(){
         const items =  this.props.items
+        
        return(
             <div id="ExpensesTable">
                 <Table>
@@ -18,18 +20,23 @@ class ExpensesTable extends Component{
                        {this.props.items.map(item => {
                             return (
                                 <tr key={item.id}>
-                                <th><h1>Income:</h1></th>
-                                <td>{item.income}</td>
                                 <th><h1>Type of Expenses:</h1></th>
                                 <td>{item.typeOfExpense}</td>
                                 <th><h1>Price:</h1></th>
                                 <td>{item.price}</td>
-                                <th><h1>Budget:</h1></th>
+                                <th><h1>Monthly Budget:</h1></th>
                                 <td>{item.budget}</td>
+                                <th><h1>Income:</h1></th>
+                                <td>{item.income}</td>
+                               
+                                <th><h1>SAVED: {item.budget - item.price}</h1></th>
                                 </tr>
                                 
                                 );
                             })}
+
+                       
+                        
                    
                 </tbody>
 

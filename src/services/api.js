@@ -8,7 +8,7 @@ const authHeaders = () => ({
   'Authorization': `Bearer ${localStorage.getItem('jwt')}`
 })
 
-const ExpenseHeaders = () => ({
+const headers = () => ({
   'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
   "Accepts":"application/json", 
   "Content-Type": "application/json"
@@ -35,10 +35,20 @@ export function profileRequest() {
     })
     .then(parseJSON)
   }
+
+  // UPDATE 
+  export function updateRequest(user_id, income,budget, monthly, year){
+    return fetch(URL + `users/${user_id}`,{
+      method: "PATCH",
+      headers: headers(),
+      body: JSON.stringify({user_id, income, budget, monthly, year })
+    })
+    .then(parseJSON)
+  }
  
   export function ExpenseRequest(user_id){
     return fetch(URL + `users/${user_id}/expenses`,{
-      headers: ExpenseHeaders(),
+      headers: headers(),
     })
     .then(parseJSON)
 }
@@ -47,7 +57,7 @@ export function profileRequest() {
 export function expenseTableRequest(user_id){
   return fetch(URL + `users/${user_id}/expensesTable`,{
     method: "POST",
-    headers: ExpenseHeaders(),
+    headers: headers(),
     body: JSON.stringify()
   })
   .then(parseJSON)
@@ -56,7 +66,7 @@ export function expenseTableRequest(user_id){
 export function deleteExpense(user_id){
   return fetch(URL + `users/${user_id}/expensesTable/DELETE`),{
     method: "DELETE",
-    headers: ExpenseHeaders(),
+    headers: headers(),
     body: JSON.stringify()
 
   }

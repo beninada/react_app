@@ -8,13 +8,25 @@ import { Redirect } from 'react-router-dom'
 
 class Profile extends React.Component {
 
-// create NAV BAR FOR expenses/ expenses table
+// create NAV BAR 
+// const datetime 
+// set income/budget once - edit - display
+// always display the table 
+// make a hash of month, year dropdown
+// purchase - name and price 
 
 
+    // componentDidMount(){
+    //     this.state.income
+    // }
+    datetime = () => {
+      this.datetime =(this.datetime.now)
+  }
 
-handleOnClick = () =>{
-  
-}
+
+  handleOnClick = () =>{
+    
+  }
 
   render() {
       console.log(getToken())

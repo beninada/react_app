@@ -15,7 +15,19 @@ class Expenses extends Component {
         items: [],
         showTable: false
     }
+// const datetime 
+// set income/budget once - edit - display
+// always display the table 
+// make a hash of month, year dropdown
+// purchase - name and price 
 
+
+    // componentDidMount(){
+    //     this.state.income
+    // }
+    datetime = () => {
+        this.datetime =(this.datetime.now)
+    }
 
     handleChangeIncome= event=>{
         this.setState({income: event.target.value})
@@ -40,12 +52,13 @@ class Expenses extends Component {
         const {income, typeOfExpense, price, budget} = this.state
         let items = [...this.state.items][0]
          this.state.items.push({
-            income: this.state.income,
             typeOfExpense: this.state.typeOfExpense,
             price: this.state.price,
-            budget: this.state.budget
+            budget: this.state.budget,
+            income: this.state.income,
         })
-        this.setState({income: '', typeOfExpense:'',price:'',budget:''})
+        this.setState({typeOfExpense:'',price:'',budget:'',income: ''})
+        // this.dispatch({type: "REMOVE_EXPENSE", payload: this.state})
        
     }
    
@@ -82,7 +95,7 @@ class Expenses extends Component {
                 <label>Price:
                 <textarea value={this.state.price} onChange={this.handleChangePrice}/>
                 </label>
-                <label>Budget:
+                <label>Monthly Budget:
                 <textarea value={this.state.budget} onChange={this.handleChangeBudget}/>
                 </label>
 

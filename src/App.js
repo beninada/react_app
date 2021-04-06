@@ -6,6 +6,7 @@ import { getUser } from './redux/actions/userActions'
 // COMPONENTS
 import Home from "./components/Home"
 import Login from "./components/Login"
+import Signup from "./components/Signup"
  import Profile from "./components/Profile"
  import Expenses from "./components/Expenses"
  import ExpensesTable from "./components/ExpensesTable"
@@ -36,6 +37,8 @@ class App extends React.Component{
       <Route exact path="/" render={routerProps => <Home {...routerProps}/>} />
 
       <Route path="/login" render={routerProps => <Login {...routerProps} />} />
+
+      <Route path="/Signup" render={routerProps => <Signup {...routerProps} />} />
 
       <Route path="/profile" render={() => <Profile />} />
 

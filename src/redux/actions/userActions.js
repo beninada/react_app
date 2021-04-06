@@ -8,3 +8,9 @@ export const getUser = () => {
     })
   }
 }
+
+export const setIncome = () =>{
+  return (dispatch) => {
+    
+  }
+}

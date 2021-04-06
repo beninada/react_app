@@ -20,8 +20,7 @@ class Login extends React.Component {
         this.setState({message: res.error})
       } else {
         localStorage.setItem('jwt', res.jwt)
-        console.log(this.props)
-
+        this.props.setUser(res.user)
         this.props.history.push('/profile')
       }
     })
