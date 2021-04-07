@@ -15,10 +15,11 @@ class Profile extends React.Component {
   state ={
     income: '',
     budget: '',
-    year: '', 
-    monthly: ''
+    year: true, 
+    monthly: false,
+    list: []
   }
-// create NAV BAR 
+// create NAV BAR component
 // const datetime 
 // set income/budget once - edit - display
 // always display the table 
@@ -27,13 +28,12 @@ class Profile extends React.Component {
 
 
    
-    datetime = () => {
-        this.datetime =(this.datetime.now)
-    }
+   
 
 
     handleChangeIncome= event=>{
       this.setState({income: event.target.value})
+      // this.datetime =(this.datetime.now)
     }
 
 
@@ -50,15 +50,23 @@ class Profile extends React.Component {
     
     handleSubmit = (event) =>{
       event.preventDefault()
-      updateRequest(this.props.user_id)
+      console.log(this.props.user.id)
       const {income,budget, monthly,year} = this.state
+      updateRequest(this.props.user.id,income,budget,monthly,year)
+      let list = [...this.state.list][0]
+      this.state.list.push({
+        income: this.state.income,
+        budget: this.state.budget,
+        monthly: this.state.monthly,
+        year: this.state.year
+      })
       this.setState({income:'', budget: '', monthly: '',year: ''})
     }
     
    
 
   render() {
-      console.log(getToken())
+      // console.log(getToken())
     return (
       
 
@@ -67,6 +75,7 @@ class Profile extends React.Component {
          {!getToken() ? <Redirect to="/login" /> : null}
 
          {this.props.user.username ? <h1>{this.props.user.username}'s Profile</h1> : <h1>Loading...</h1>}
+         
          <form onSubmit={this.handleSubmit}>
                 <label>INCOME:
                 <textarea value={this.state.income} onChange={this.handleChangeIncome}/>
@@ -88,9 +97,8 @@ class Profile extends React.Component {
                 </label>
                
                 <input type="submit" value="Submit"/>
-
-        
-            </form>       
+              </form>       
+              
         
       </div>
     )

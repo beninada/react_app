@@ -1,16 +1,75 @@
 import React, { Component } from "react";
-import {connect} from "react";
-
+import {connect} from "react-redux";
+import {authRequest} from '../services/api'
+import {getUser} from '../redux/actions/userActions'
 class Signup extends React.Component {
  
-render(){
-   return(
-       <form>
+    state = {
+        username: '',
+        password: '',
+        message: ''
+      }
+    
+    handleSubmit = event => {
+    event.preventDefault()
+    const { username, password } = this.state
 
-       </form>
-   )
+    authRequest({username, password})
+    .then(res => {
+        if (res.error) {
+        this.setState({message: res.error})
+        } else {
+        localStorage.setItem('jwt', res.jwt)
+        this.props.getUser(res.user)
+        this.props.history.push('/profile')
+        
+        }
+    })
+    this.setState({username: '', password:''})
+    }
+    
+    handleChangeUsername = event => {
+        this.setState({[event.target.name]: event.target.value})
+    }
+    
+    handleChangePassword = event => {
+        this.setState({password: event.target.value})
+    }
+        render(){
+            return (
+                <div>
+        
+                <form onSubmit={this.handleSubmit}>
+        
+                    <p style={{color: 'pink'}}>{this.state.message}</p>
+                    <h3>SIGNUP:</h3>
+                    <input type="text"
+                    name="username"
+                    onChange={this.handleChangeUsername}
+                    placeholder="Username"
+                    value={this.state.username}
+                    />
+        
+                    <input type="password"
+                    onChange={this.handleChangePassword}
+                    placeholder="Password"
+                    value={this.state.password}
+                    />
+        
+                    <input type="submit"
+                    value="Signup"
+                    />
+        
+                </form>
+        
+                </div>
+            )
+        }
 }
-
-}
-
-export default Signup
+const mapDispatchToProps = dispatch => {
+    return {
+      getUser: user => dispatch(getUser(user))
+    }
+  }
+  
+export default connect(null, mapDispatchToProps)(Signup)

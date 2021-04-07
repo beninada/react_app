@@ -16,6 +16,7 @@ class Login extends React.Component {
 
     authRequest({username, password})
     .then(res => {
+    
       if (res.error) {
         this.setState({message: res.error})
       } else {
@@ -24,6 +25,7 @@ class Login extends React.Component {
         this.props.history.push('/profile')
       }
     })
+    this.setState({username: '', password:''})
   }
 
   handleChangeUsername = event => {
@@ -45,11 +47,13 @@ class Login extends React.Component {
           <input type="text"
           name="username"
           onChange={this.handleChangeUsername}
+          placeholder="Username"
           value={this.state.username}
           />
 
           <input type="password"
           onChange={this.handleChangePassword}
+          placeholder="Password"
           value={this.state.password}
           />
 

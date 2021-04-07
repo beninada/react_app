@@ -41,7 +41,7 @@ export function profileRequest() {
     return fetch(URL + `users/${user_id}`,{
       method: "PATCH",
       headers: headers(),
-      body: JSON.stringify({user_id, income, budget, monthly, year })
+      body: JSON.stringify({user:{income, budget, monthly, year } })
     })
     .then(parseJSON)
   }

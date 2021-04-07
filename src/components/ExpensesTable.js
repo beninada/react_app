@@ -24,10 +24,6 @@ class ExpensesTable extends Component{
                                 <td>{item.typeOfExpense}</td>
                                 <th><h1>Price:</h1></th>
                                 <td>{item.price}</td>
-                                <th><h1>Monthly Budget:</h1></th>
-                                <td>{item.budget}</td>
-                                <th><h1>Income:</h1></th>
-                                <td>{item.income}</td>
                                
                                 <th><h1>SAVED: {item.budget - item.price}</h1></th>
                                 </tr>
