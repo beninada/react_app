@@ -8,30 +8,12 @@ import ExpensesTable from './ExpensesTable'
 class Expenses extends Component {
     
     state = {
-        income:'',
         typeOfExpense: '',
         price: '',
-        budget: '',
         items: [],
         showTable: false
     }
-// const datetime 
-// set income/budget once - edit - display
-// always display the table 
-// make a hash of month, year dropdown
-// purchase - name and price 
 
-
-    // componentDidMount(){
-    //     this.state.income
-    // }
-    datetime = () => {
-        this.datetime =(this.datetime.now)
-    }
-
-    handleChangeIncome= event=>{
-        this.setState({income: event.target.value})
-    }
 
     handleChangeTypeOfExpense= event =>{
         this.setState({typeOfExpense: event.target.value})
@@ -41,23 +23,19 @@ class Expenses extends Component {
         this.setState({price:event.target.value})
     }
 
-    handleChangeBudget= event=>{
-        this.setState({budget:event.target.value})
-    }
+
     
     handleSubmit = (event) =>{
         event.preventDefault()
         alert(`A ${this.state[0]} was submitted: ` + this.state);
         ExpenseRequest(this.props.user.id)
-        const {income, typeOfExpense, price, budget} = this.state
+        const { typeOfExpense, price} = this.state
         let items = [...this.state.items][0]
          this.state.items.push({
             typeOfExpense: this.state.typeOfExpense,
             price: this.state.price,
-            budget: this.state.budget,
-            income: this.state.income,
         })
-        this.setState({typeOfExpense:'',price:'',budget:'',income: ''})
+        this.setState({typeOfExpense:'',price:''})
         // this.dispatch({type: "REMOVE_EXPENSE", payload: this.state})
        
     }
@@ -95,15 +73,7 @@ class Expenses extends Component {
                 <label>Price:
                 <textarea value={this.state.price} onChange={this.handleChangePrice}/>
                 </label>
-                <label>Monthly Budget:
-                <textarea value={this.state.budget} onChange={this.handleChangeBudget}/>
-                </label>
-
-                <label>Income:
-                <textarea value={this.state.income} onChange={this.handleChangeIncome}/>
-                </label>
-                
-                 <input type="submit" value="Submit"/>
+                <input type="submit" value="Submit"/>
 
         
             </form>
@@ -121,9 +91,9 @@ class Expenses extends Component {
 }
 
 const mapStateToProps= state =>{
-  const {user, income, typeOfExpense, price, budget} = state 
+  const {user,  typeOfExpense, price} = state 
     return{
-       user, income, typeOfExpense, price, budget
+       user,  typeOfExpense, price
     }
 }
 

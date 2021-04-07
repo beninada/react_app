@@ -1,4 +1,5 @@
 import  { profileRequest } from '../../services/api'
+import { updateRequest } from '../../services/api'
 
 
 export const getUser = () => {
@@ -11,8 +12,16 @@ export const getUser = () => {
 
 export const setIncome = () =>{
   return (dispatch) => {
-    profileRequest().then(response =>{
+    updateRequest().then(response =>{
       dispatch({type: 'SET_INCOME', payload: response})
+    })
+  }
+}
+
+export const setBudget = () =>{
+  return (dispatch) => {
+    updateRequest().then(response =>{
+      dispatch({type: 'SET_BUDGET', payload: response})
     })
   }
 }
