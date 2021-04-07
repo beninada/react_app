@@ -14,7 +14,7 @@ class Profile extends React.Component {
  
   state ={
     income: '',
-    bidget: '',
+    budget: '',
     year: '', 
     monthly: ''
   }
@@ -51,6 +51,8 @@ class Profile extends React.Component {
     handleSubmit = (event) =>{
       event.preventDefault()
       updateRequest(this.props.user_id)
+      const {income,budget, monthly,year} = this.state
+      this.setState({income:'', budget: '', monthly: '',year: ''})
     }
     
    
