@@ -11,6 +11,8 @@ export const getUser = () => {
 
 export const setIncome = () =>{
   return (dispatch) => {
-    
+    profileRequest().then(response =>{
+      dispatch({type: 'SET_INCOME', payload: response})
+    })
   }
 }
