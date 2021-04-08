@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 import Expenses from './Expenses'
 import Table from 'react-bootstrap/Table'
 
 
 
-class ExpensesTable extends Component{
+class ExpensesTable extends React.Component{
 
    
       
@@ -46,6 +46,7 @@ const mapDispatchToProps= dispatch =>{
     
         addExpense: expense => dispatch({type: "ADD_EXPENSE", payload:expense}),
         removeExpense: expense => dispatch({type: "REMOVE_EXPENSE", payload:expense})
+        
     }
 }
 

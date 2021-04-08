@@ -12,6 +12,7 @@ import Signup from "./components/Signup"
  import ExpensesTable from "./components/ExpensesTable"
 // CSS
 import './App.css';
+
 // SERVICES
 import { clearToken, getToken } from './services/localStorage'
 
@@ -31,7 +32,7 @@ class App extends React.Component{
     return (
       <Router>
       <div className="App">
-
+     
       <Switch>
 
       <Route exact path="/" render={routerProps => <Home {...routerProps}/>} />
@@ -49,7 +50,7 @@ class App extends React.Component{
       </Switch>
 
       {this.props.user.username ? <button onClick={this.handleLogout}>Logout</button> : null}
-
+     
       </div>
       </Router>
     );

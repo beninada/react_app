@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import { ExpenseRequest } from '../services/api';
 import ExpensesTable from './ExpensesTable'
+import SubmittedData from './SubmittedData'
 
 
 
@@ -36,7 +37,7 @@ class Expenses extends Component {
             price: this.state.price,
         })
         this.setState({typeOfExpense:'',price:''})
-        // this.dispatch({type: "REMOVE_EXPENSE", payload: this.state})
+        
        
     }
    
@@ -79,6 +80,7 @@ class Expenses extends Component {
             </form>
 
             <div>
+                <SubmittedData listOfSubmissions = {this.state.listOfSubmissions}/>
             <button onClick={this.handleClick}>Show Table</button>
             <span>{this.getComponent()}</span>
             <button onClick={this.removeExpense}>REMOVE</button>
@@ -98,13 +100,12 @@ const mapStateToProps= state =>{
 }
 
 
+
 export default connect(mapStateToProps)(Expenses)
 
 
 
-// dispatch
-// make a fetch with the variable's values 
-// import delete from fetch services/api
+
 
  
 

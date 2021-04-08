@@ -6,24 +6,38 @@ import { Redirect } from 'react-router-dom'
 import { setIncome } from '../redux/actions/userActions'
 import {setBudget} from '../redux/actions/userActions'
 import {updateRequest} from '../services/api'
-import {deleteUserData} from '../services/api'
-import ExpensesTable from './ExpensesTable'
-// import {profileRequest} from '../services/api'
+import SubmittedData from './SubmittedData'
+
 
 
 class Profile extends React.Component {
- 
+  
+  
+  
+  initialState = {
+    income: '',
+    budget: '',
+    yearly: true, 
+    monthly: false,
+    listOfSubmissions: {
+      income: this.props.user.income,
+      budget: this.props.user.budget,
+      monthly: this.props.user.monthly,
+      yearly: this.props.user.yearly 
+    }
+  }
   state ={
     income: '',
     budget: '',
     yearly: true, 
     monthly: false,
-    listOfSubmissions: [{
+    listOfSubmissions: {
       income: this.props.user.income,
       budget: this.props.user.budget,
       monthly: this.props.user.monthly,
       yearly: this.props.user.yearly 
-    }]
+    }
+
   }
 // create NAV BAR component
 // const datetime 
@@ -59,55 +73,27 @@ class Profile extends React.Component {
       console.log(this.props.user.id)
       const {income,budget, monthly,yearly} = this.state
       updateRequest(this.props.user.id,income,budget,monthly,yearly)
-      let listOfSubmissions = [...this.state.listOfSubmissions][0]
-      this.state.listOfSubmissions.push({
-        income: this.state.income,
-        budget: this.state.budget,
-        monthly: this.state.monthly,
-        yearly: this.state.yearly
-      })
-      
+      this.setState({listOfSubmissions:{ income,budget,monthly,yearly}})
       this.setState({income: '', budget: '', monthly: '',yearly: ''})
     }
-    // once is submitted make the edit/delete button shows 
-
-    submittedData = ()=> {
-
-      return this.state.listOfSubmissions.map(data =>{
-          return <div>
-                <label>INCOME</label>
-                <span><li>{data.income}</li></span>
-                <label>BUDGET</label>
-                <span><li>{data.budget}</li></span>
-                <label>MONTHLY</label>
-                <span><li>{data.monthly ? "true" : "false"}</li></span>
-                <label>YEARLY</label>
-                <span><li>{data.yearly ? "true" : "false"}</li></span>
-               </div>
-      })
-      
-    }
-    
-    getComponent = () =>{
-     
-    }
-
+   
     handleClick = () =>{
       this.setState({
         listOfSubmissions: this.state.listOfSubmissions
       });
     }
-    handleClickDelete= () =>{
-      deleteUserData(this.state.listOfSubmissions)
+    handleClickDelete = () =>{
+     this.setState({
+      ...this.initialState 
+     })
     }
 
   render() {
       // console.log(getToken())
     return (
-      
-
-      <div>
      
+      <div>
+        
          {!getToken() ? <Redirect to="/login" /> : null}
 
          {this.props.user.username ? <h1>{this.props.user.username}'s Profile</h1> : <h1>Loading...</h1>}
@@ -135,9 +121,8 @@ class Profile extends React.Component {
                 <input type="submit" value="Submit"/>
               </form> 
                  
-              {this.submittedData()}
+              <SubmittedData listOfSubmissions = {this.state.listOfSubmissions}/>
               <button onClick={this.handleClick}> 💰 </button>
-              <span>{this.getComponent()}</span>
               <button onClick={this.handleClickDelete}>REMOVE</button>
           </div>
     )

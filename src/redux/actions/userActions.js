@@ -1,5 +1,6 @@
 import  { profileRequest } from '../../services/api'
-import { updateRequest } from '../../services/api'
+import {updateRequest} from '../../services/api'
+import {deleteUserData} from '../../services/api'
 
 
 export const getUser = () => {
@@ -26,4 +27,10 @@ export const setBudget = () =>{
   }
 }
 
-
+export const deleteUser = () =>{
+  return (dispatch) => {
+    deleteUserData().then(response =>{
+      dispatch({type: 'DELETE_DATA', payload: response})
+    })
+  }
+}
