@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import {connect} from "react-redux";
 import {signupRequest} from '../services/api'
 import {getUser} from '../redux/actions/userActions'
+
 class Signup extends React.Component {
-//  sign up is not working
+
     state = {
         username: '',
         password: '',

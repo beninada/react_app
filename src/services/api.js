@@ -36,6 +36,7 @@ export function signupRequest(credentials) {
   })
   .then(parseJSON)
 }
+
 export function profileRequest() {
     console.log(authHeaders())
     return fetch(URL + 'profile', {
@@ -53,15 +54,15 @@ export function profileRequest() {
     })
     .then(parseJSON)
   }
-  // export function deleteUserData(user_id){
-  //   return fetch(URL + `users/${user_id}`),{
-  //     method: "DELETE",
-  //     headers: headers(),
-  //     body: JSON.stringify()
+  export function deleteUserData(){
+    return fetch(URL + `users`,{
+      method: "DELETE",
+      headers: headers(),
+      body: JSON.stringify()
   
-  //   }
-  //   .then(parseJSON)
-  // }
+    })
+    .then(parseJSON)
+  }
  
   export function ExpenseRequest(user_id){
     return fetch(URL + `users/${user_id}/expenses`,{
@@ -80,12 +81,12 @@ export function expenseTableRequest(user_id){
   .then(parseJSON)
 }
 
-export function deleteExpense(user_id){
-  return fetch(URL + `users/${user_id}/expensesTable/DELETE`),{
+export function deleteExpense(){
+  return fetch(URL + `users`,{
     method: "DELETE",
     headers: headers(),
     body: JSON.stringify()
 
-  }
+  })
   .then(parseJSON)
 }

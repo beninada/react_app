@@ -16,24 +16,18 @@ class ExpensesTable extends Component{
             <div id="ExpensesTable">
                 <Table>
                 <tbody>
-                   
-                       {this.props.items.map(item => {
+                    {this.props.items.map(item => {
                             return (
                                 <tr key={item.id}>
                                 <th><h1>Type of Expenses:</h1></th>
                                 <td>{item.typeOfExpense}</td>
                                 <th><h1>Price:</h1></th>
                                 <td>{item.price}</td>
-                               
-                                <th><h1>SAVED: {item.budget - item.price}</h1></th>
                                 </tr>
                                 
-                                );
-                            })}
+                            );
+                    })}
 
-                       
-                        
-                   
                 </tbody>
 
                 </Table>
