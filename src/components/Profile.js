@@ -17,7 +17,11 @@ class Profile extends React.Component {
     budget: '',
     yearly: true, 
     monthly: false,
-    listOfSubmissions: []
+    listOfSubmissions: [{income: this.props.user.income,
+                        budget: this.props.user.budget,
+                        monthly: this.props.user.monthly,
+                        yearly: this.props.user.yearly
+            }]
   }
 // create NAV BAR component
 // const datetime 
@@ -80,11 +84,12 @@ class Profile extends React.Component {
                 <label>BUDGET</label>
                 <span><li>{data.budget}</li></span>
                 <label>MONTHLY</label>
-                <span>{data.monthly}</span>
+                <span><li>{data.monthly ? "true" : "false"}</li></span>
                 <label>YEARLY</label>
-                <span><li>{data.yearly}</li></span>
+                <span><li>{data.yearly ? "true" : "false"}</li></span>
                </div>
       })
+      
     }
     
 

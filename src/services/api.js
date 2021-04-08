@@ -28,6 +28,14 @@ export function authRequest(credentials) {
   .then(parseJSON)
 }
 
+export function signupRequest(credentials) {
+  return fetch(URL + 'users', {
+    method: "POST",
+    headers: loginHeaders,
+    body: JSON.stringify({user: credentials})
+  })
+  .then(parseJSON)
+}
 export function profileRequest() {
     console.log(authHeaders())
     return fetch(URL + 'profile', {
@@ -45,6 +53,15 @@ export function profileRequest() {
     })
     .then(parseJSON)
   }
+  // export function deleteUserData(user_id){
+  //   return fetch(URL + `users/${user_id}`),{
+  //     method: "DELETE",
+  //     headers: headers(),
+  //     body: JSON.stringify()
+  
+  //   }
+  //   .then(parseJSON)
+  // }
  
   export function ExpenseRequest(user_id){
     return fetch(URL + `users/${user_id}/expenses`,{

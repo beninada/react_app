@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {connect} from "react-redux";
-import {authRequest} from '../services/api'
+import {signupRequest} from '../services/api'
 import {getUser} from '../redux/actions/userActions'
 class Signup extends React.Component {
 //  sign up is not working
@@ -14,7 +14,7 @@ class Signup extends React.Component {
     event.preventDefault()
     const { username, password } = this.state
 
-    authRequest({username, password})
+    signupRequest({username, password})
     .then(res => {
         if (res.error) {
         this.setState({message: res.error})
