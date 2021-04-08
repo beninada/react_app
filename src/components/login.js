@@ -43,7 +43,7 @@ class Login extends React.Component {
         <form onSubmit={this.handleSubmit}>
 
           <p style={{color: 'pink'}}>{this.state.message}</p>
-            <h3>PLEASE LOGIN:</h3>
+            <h3>PLEASE LOG IN:</h3>
           <input type="text"
           name="username"
           onChange={this.handleChangeUsername}

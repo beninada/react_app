@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {authRequest} from '../services/api'
 import {getUser} from '../redux/actions/userActions'
 class Signup extends React.Component {
- 
+//  sign up is not working
     state = {
         username: '',
         password: '',
@@ -42,7 +42,7 @@ class Signup extends React.Component {
                 <form onSubmit={this.handleSubmit}>
         
                     <p style={{color: 'pink'}}>{this.state.message}</p>
-                    <h3>SIGNUP:</h3>
+                    <h3>SIGN UP:</h3>
                     <input type="text"
                     name="username"
                     onChange={this.handleChangeUsername}

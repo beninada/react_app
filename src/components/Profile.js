@@ -15,15 +15,15 @@ class Profile extends React.Component {
   state ={
     income: '',
     budget: '',
-    year: true, 
+    yearly: true, 
     monthly: false,
-    list: []
+    listOfSubmissions: []
   }
 // create NAV BAR component
 // const datetime 
 // set income/budget once - edit - display
 // always display the table 
-// make a hash of month, year dropdown
+// make a hash of month, yearly dropdown
 // purchase - name and price 
 
 
@@ -32,38 +32,61 @@ class Profile extends React.Component {
 
 
     handleChangeIncome= event=>{
-      this.setState({income: event.target.value})
+      this.setState({
+        income: event.target.value
+      })
       // this.datetime =(this.datetime.now)
     }
 
 
     handleChangeBudget= event=>{
-      this.setState({budget:event.target.value})
+      this.setState({
+        budget:event.target.value
+      })
     }
 
     handleChangeMonthly = (event) =>{
-      this.setState({monthly:event.target.value})
+      this.setState({
+        monthly:event.target.value
+      })
     }
-    handleChangeYear = (event) =>{
-      this.setState({year:event.target.value})
+    handleChangeYearly = (event) =>{
+      this.setState({
+        yearly:event.target.value
+      })
     }
     
     handleSubmit = (event) =>{
       event.preventDefault()
       console.log(this.props.user.id)
-      const {income,budget, monthly,year} = this.state
-      updateRequest(this.props.user.id,income,budget,monthly,year)
-      let list = [...this.state.list][0]
-      this.state.list.push({
+      const {income,budget, monthly,yearly} = this.state
+      updateRequest(this.props.user.id,income,budget,monthly,yearly)
+      let listOfSubmissions = [...this.state.listOfSubmissions][0]
+      this.state.listOfSubmissions.push({
         income: this.state.income,
         budget: this.state.budget,
         monthly: this.state.monthly,
-        year: this.state.year
+        yearly: this.state.yearly
       })
-      this.setState({income:'', budget: '', monthly: '',year: ''})
+      this.setState({income:'', budget: '', monthly: '',yearly: ''})
     }
     
    
+    submittedData = ()=> {
+      return this.state.listOfSubmissions.map(data =>{
+          return <div>
+                <label>INCOME</label>
+                <span><li>{data.income}</li></span>
+                <label>BUDGET</label>
+                <span><li>{data.budget}</li></span>
+                <label>MONTHLY</label>
+                <span>{data.monthly}</span>
+                <label>YEARLY</label>
+                <span><li>{data.yearly}</li></span>
+               </div>
+      })
+    }
+    
 
   render() {
       // console.log(getToken())
@@ -83,8 +106,8 @@ class Profile extends React.Component {
                 <label>BUDGET:
                 <textarea value={this.state.budget} onChange={this.handleChangeBudget}/>
                 </label>
-                <label> YEAR:
-                 <select name="year" value={this.state.year}onChange={this.handleChangeYear}>
+                <label> yearly:
+                 <select name="yearly" value={this.state.yearly}onChange={this.handleChangeYearly}>
                    <option value= "true">true</option>
                    <option value= "false">false</option>
                  </select>  
@@ -98,9 +121,8 @@ class Profile extends React.Component {
                
                 <input type="submit" value="Submit"/>
               </form>       
-              
-        
-      </div>
+              {this.submittedData()}
+          </div>
     )
   }
 }
