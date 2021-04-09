@@ -112,7 +112,7 @@ class Profile extends React.Component {
                 <input type="submit" value="Submit"/>
               </form> 
                  
-              {/* <SubmittedData /> */}
+              <SubmittedData />
               <button onClick={this.handleClick}> 💰 </button>
               <button onClick={this.handleClickDelete}>REMOVE</button>
           </div>

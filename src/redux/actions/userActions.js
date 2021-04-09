@@ -23,10 +23,12 @@ export const setData = (user_id,user) =>{
   return (dispatch) => {
     updateRequest(user_id,user).then(response =>{
       console.log(response)
-      dispatch({type: 'SET_DATA', payload: response})
+      dispatch({type: 'SET_USER', payload: response})
     })
   }
 }
+
+
 
 export const setBudget = (user) =>{
   return (dispatch) => {

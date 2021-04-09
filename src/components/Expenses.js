@@ -5,6 +5,8 @@ import ExpensesTable from './ExpensesTable'
 import SubmittedData from './SubmittedData'
 import { setIncome } from '../redux/actions/userActions'
 import {setBudget} from '../redux/actions/userActions'
+import { getToken } from '../services/localStorage'
+import { Redirect } from 'react-router-dom'
 
 
 
@@ -64,8 +66,10 @@ class Expenses extends Component {
     render() {
      
         return (
-           
+            
             <>
+             {!getToken() ? <Redirect to="/login" /> : null}
+           
             <form onSubmit={this.handleSubmit}>
                 <h1>EXPENSE TRACKER:</h1>
                 <label>Type of Expense:
@@ -81,7 +85,7 @@ class Expenses extends Component {
             </form>
 
             <div>
-                <SubmittedData listOfSubmissions = {this.props.listOfSubmissions}/>
+                <SubmittedData />
             <button onClick={this.handleClick}>Show Table</button>
             <span>{this.getComponent()}</span>
             <button onClick={this.removeExpense}>REMOVE</button>

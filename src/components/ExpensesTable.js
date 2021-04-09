@@ -5,6 +5,7 @@ import Table from 'react-bootstrap/Table'
 
 
 
+
 class ExpensesTable extends React.Component{
 
    
@@ -29,7 +30,7 @@ class ExpensesTable extends React.Component{
                     })}
 
                 </tbody>
-
+                   
                 </Table>
 
             </div>

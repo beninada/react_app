@@ -36,7 +36,7 @@ class App extends React.Component{
       <Switch>
 
       <Route exact path="/" render={routerProps => <Home {...routerProps}/>} />
-
+      
       <Route path="/login" render={routerProps => <Login {...routerProps} />} />
 
       <Route path="/Signup" render={routerProps => <Signup {...routerProps} />} />
