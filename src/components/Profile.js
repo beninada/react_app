@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { setIncome } from '../redux/actions/userActions'
 import {setBudget} from '../redux/actions/userActions'
+import {setData} from '../redux/actions/userActions'
 import {updateRequest} from '../services/api'
 import SubmittedData from './SubmittedData'
 
@@ -19,24 +20,14 @@ class Profile extends React.Component {
     budget: '',
     yearly: true, 
     monthly: false,
-    listOfSubmissions: {
-      income: this.props.user.income,
-      budget: this.props.user.budget,
-      monthly: this.props.user.monthly,
-      yearly: this.props.user.yearly 
-    }
+   
   }
   state ={
     income: '',
     budget: '',
     yearly: true, 
     monthly: false,
-    listOfSubmissions: {
-      income: this.props.user.income,
-      budget: this.props.user.budget,
-      monthly: this.props.user.monthly,
-      yearly: this.props.user.yearly 
-    }
+   
 
   }
 // create NAV BAR component
@@ -72,8 +63,8 @@ class Profile extends React.Component {
       event.preventDefault()
       console.log(this.props.user.id)
       const {income,budget, monthly,yearly} = this.state
-      updateRequest(this.props.user.id,income,budget,monthly,yearly)
-      this.setState({listOfSubmissions:{ income,budget,monthly,yearly}})
+      // updateRequest(this.props.user.id,income,budget,monthly,yearly)
+      this.props.setData(this.props.user.id,{user: {income, budget, monthly,yearly}})
       this.setState({income: '', budget: '', monthly: '',yearly: ''})
     }
    
@@ -89,7 +80,7 @@ class Profile extends React.Component {
     }
 
   render() {
-      // console.log(getToken())
+      console.log(getToken())
     return (
      
       <div>
@@ -121,7 +112,7 @@ class Profile extends React.Component {
                 <input type="submit" value="Submit"/>
               </form> 
                  
-              <SubmittedData listOfSubmissions = {this.state.listOfSubmissions}/>
+              {/* <SubmittedData /> */}
               <button onClick={this.handleClick}> 💰 </button>
               <button onClick={this.handleClickDelete}>REMOVE</button>
           </div>
@@ -130,15 +121,16 @@ class Profile extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const {user,expenses} = state
+  const {user,expenses, submittedData} = state
   return {
-    user, expenses
+    user, expenses, submittedData
   }
 }
 const mapDispatchToProps = dispatch =>{
   return{
-    setIncome: user => dispatch(setIncome(this.state.income)),
-    setBudget: user => dispatch(setBudget(this.state.budget))
+    setIncome: income => dispatch(setIncome(income)),
+    setBudget: budget => dispatch(setBudget(budget)),
+    setData: (user_id,data)=> dispatch(setData(user_id,data))
   }
 }
 

@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import { ExpenseRequest } from '../services/api';
 import ExpensesTable from './ExpensesTable'
 import SubmittedData from './SubmittedData'
+import { setIncome } from '../redux/actions/userActions'
+import {setBudget} from '../redux/actions/userActions'
 
 
 
@@ -28,13 +30,12 @@ class Expenses extends Component {
     
     handleSubmit = (event) =>{
         event.preventDefault()
-        alert(`A ${this.state[0]} was submitted: ` + this.state);
         ExpenseRequest(this.props.user.id)
         const { typeOfExpense, price} = this.state
         let items = [...this.state.items][0]
          this.state.items.push({
             typeOfExpense: this.state.typeOfExpense,
-            price: this.state.price,
+            price: this.state.price
         })
         this.setState({typeOfExpense:'',price:''})
         
@@ -61,7 +62,7 @@ class Expenses extends Component {
    
     
     render() {
-
+     
         return (
            
             <>
@@ -80,7 +81,7 @@ class Expenses extends Component {
             </form>
 
             <div>
-                <SubmittedData listOfSubmissions = {this.state.listOfSubmissions}/>
+                <SubmittedData listOfSubmissions = {this.props.listOfSubmissions}/>
             <button onClick={this.handleClick}>Show Table</button>
             <span>{this.getComponent()}</span>
             <button onClick={this.removeExpense}>REMOVE</button>
@@ -99,9 +100,14 @@ const mapStateToProps= state =>{
     }
 }
 
+const mapDispatchToProps= (dispatch) =>{
+    return {
+        setIncome:  dispatch => dispatch(setIncome(this.props.listOfSubmission.income)),
+        setBudget: dispatch => dispatch(setBudget(this.props.listOfSubmission.budget))
+      }
+}
 
-
-export default connect(mapStateToProps)(Expenses)
+export default connect(mapStateToProps, mapDispatchToProps)(Expenses)
 
 
 

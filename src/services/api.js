@@ -46,11 +46,11 @@ export function profileRequest() {
   }
 
   // UPDATE 
-  export function updateRequest(user_id, income,budget, monthly, year){
+  export function updateRequest(user_id, user){
     return fetch(URL + `users/${user_id}`,{
       method: "PATCH",
       headers: headers(),
-      body: JSON.stringify({user:{income, budget, monthly, year } })
+      body: JSON.stringify(user)
     })
     .then(parseJSON)
   }

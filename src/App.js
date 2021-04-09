@@ -47,8 +47,7 @@ class App extends React.Component{
 
       <Route path="/expenses/expensesTable" render={() => <ExpensesTable/>}/>
 
-      </Switch>
-
+      </Switch> 
       {this.props.user.username ? <button onClick={this.handleLogout}>Logout</button> : null}
      
       </div>
@@ -66,4 +65,8 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(state => state, mapDispatchToProps)(App)
 
-
+// make the redirect with the token 
+{/* <Route path="/login" exact >
+{redirect("login")} */}
+{/* </Route> */}
+// Route path="/login" render={routerProps => <Login {...routerProps} />} 
