@@ -9,6 +9,7 @@ import reducer from './redux/reducer/index'
 import thunk from 'redux-thunk'
 import { Navbar } from 'react-bootstrap';
 
+
 const store = createStore(reducer, applyMiddleware(thunk))
 
 ReactDOM.render(

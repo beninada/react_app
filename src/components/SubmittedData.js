@@ -24,9 +24,7 @@ render(){
 }
 // create a ternary for price and submitted data 
 
-// substractData = () =>{
-
-// }
+  
 
 
 }
