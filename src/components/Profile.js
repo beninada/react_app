@@ -35,16 +35,18 @@ class Profile extends React.Component {
 // set income/budget once - edit - display
 // always display the table 
    handleChangeIncome= event=>{
+      const income = event.target.value.replace(/[^0-9.]/g, "")
       this.setState({
-        income: event.target.value
+        income
       })
       // this.datetime =(this.datetime.now)
     }
 
 
     handleChangeBudget= event=>{
+      const budget = event.target.value.replace(/[^0-9.]/g, "")
       this.setState({
-        budget:event.target.value
+        budget
       })
     }
 
@@ -96,7 +98,7 @@ class Profile extends React.Component {
                 <label>BUDGET:
                 <textarea value={this.state.budget} onChange={this.handleChangeBudget}/>
                 </label>
-                <label> yearly:
+                <label> YEARLY:
                  <select name="yearly" value={this.state.yearly}onChange={this.handleChangeYearly}>
                    <option value= "true">true</option>
                    <option value= "false">false</option>
@@ -109,7 +111,7 @@ class Profile extends React.Component {
                  </select>  
                 </label>
                
-                <input type="submit" value="Submit"/>
+                <input type="submit" value="SUBMIT"/>
               </form> 
                  
               <SubmittedData />

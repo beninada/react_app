@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import { ExpenseRequest } from '../services/api';
+import { addExpenseRequest, getExpenses } from '../services/api';
 import ExpensesTable from './ExpensesTable'
 import SubmittedData from './SubmittedData'
 import { setIncome } from '../redux/actions/userActions'
@@ -19,6 +19,17 @@ class Expenses extends Component {
         showTable: false
     }
 
+    componentDidMount(){
+        getExpenses().then(expenses => {
+            for(let expense of expenses){
+                this.state.items.push({
+                    typeOfExpense: expense.name,
+                    price: expense.amount
+                })
+            }
+        })
+    }
+
 
     handleChangeTypeOfExpense= event =>{
         this.setState({typeOfExpense: event.target.value})
@@ -32,34 +43,52 @@ class Expenses extends Component {
     
     handleSubmit = (event) =>{
         event.preventDefault()
-        ExpenseRequest(this.props.user.id)
-        const { typeOfExpense, price} = this.state
-        let items = [...this.state.items][0]
-         this.state.items.push({
-            typeOfExpense: this.state.typeOfExpense,
-            price: this.state.price
+
+        addExpenseRequest({
+            expense: {
+                name: this.state.typeOfExpense,
+                amount: this.state.price
+            }
+        }).then(json => {
+            const {name, amount} = json
+            let items = [...this.state.items][0]
+            this.state.items.push({
+                typeOfExpense: name,
+                price: amount
+            })
+            this.setState({typeOfExpense:'',price:''})
+        }).catch(err => {
+            console.log(err)
+            alert(err)
         })
-        this.setState({typeOfExpense:'',price:''})
+
         
-       
     }
    
     
-        handleClick = () =>{
-            this.setState({
-               showTable: !this.state.showTable
-            });
-        }
+    handleClick = () =>{
+        this.setState({
+            showTable: !this.state.showTable
+        });
+    }
          
-        getComponent = () =>{
-            if (this.state.showTable){
-                console.log(this.state.items)
-                return <ExpensesTable items = {this.state.items}/>;
-               
-            }else {
-                return null;
-            }
+    getComponent = () =>{
+        if (this.state.showTable){
+            return <ExpensesTable items = {this.state.items}/>;
+            
+        }else {
+            return null;
         }
+    }
+
+    renderMoneyRemaining = () => {
+        const totalToSpend = this.props.user.budget
+        let totalSpent = 0
+        for(let item of this.state.items){
+            totalSpent += item.price
+        }
+        return totalToSpend - totalSpent
+    }
       
    
     
@@ -72,12 +101,12 @@ class Expenses extends Component {
            
             <form onSubmit={this.handleSubmit}>
                 <h1>EXPENSE TRACKER:</h1>
-                <label>Type of Expense:
+                <label>TYPE OF EXPENSE:
                 <table items= {this.state.items}/>
-                <textarea value={this.state.typeOfExpense} onChange={this.handleChangeTypeOfExpense}/>
+                <textarea value={this.state.typeOfExpense} onChange={this.handleChangeTypeOfExpense}placeholder={this.state.typeOfExpense} />
                 </label>
-                <label>Price:
-                <textarea value={this.state.price} onChange={this.handleChangePrice}/>
+                <label>PRICE:
+                <textarea value={this.state.price} onChange={this.handleChangePrice}placeholder={this.state.price} />
                 </label>
                 <input type="submit" value="Submit"/>
 
@@ -85,9 +114,14 @@ class Expenses extends Component {
             </form>
 
             <div>
-                <SubmittedData />
+                <SubmittedData/>
+
             <button onClick={this.handleClick}>Show Table</button>
             <span>{this.getComponent()}</span>
+            <h1>Money Spent</h1>
+            <p>{this.props.user.budget - this.renderMoneyRemaining()}</p>
+            <h1>Money Remaining!</h1>
+            <p>{this.renderMoneyRemaining()}</p>
             <button onClick={this.removeExpense}>REMOVE</button>
             
             </div>

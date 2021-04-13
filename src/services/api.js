@@ -63,26 +63,28 @@ export function profileRequest() {
     })
     .then(parseJSON)
   }
+
+  export function getExpenses(){
+    return fetch(URL + 'expenses', {
+      headers: headers()
+    })
+    .then(parseJSON)
+  }
  
-  export function ExpenseRequest(user_id){
-    return fetch(URL + `users/${user_id}/expenses`,{
+  export function addExpenseRequest(expenseData){
+    return fetch(URL + `expenses`,{
+      method: "POST",
       headers: headers(),
+      body: JSON.stringify(expenseData)
     })
     .then(parseJSON)
 }
 
 
-export function expenseTableRequest(user_id){
-  return fetch(URL + `users/${user_id}/expensesTable`,{
-    method: "POST",
-    headers: headers(),
-    body: JSON.stringify()
-  })
-  .then(parseJSON)
-}
 
-export function deleteExpense(){
-  return fetch(URL + `users`,{
+
+export function deleteExpense(expenseId){
+  return fetch(URL + `expenses/${expenseId}`,{
     method: "DELETE",
     headers: headers(),
     body: JSON.stringify()
