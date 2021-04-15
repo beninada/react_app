@@ -13,8 +13,10 @@ import Signup from "./components/Signup"
 // CSS
 import './App.css';
 
+
 // SERVICES
-import { clearToken, getToken } from './services/localStorage'
+import { clearToken} from './services/localStorage'
+
 
 class App extends React.Component{
    
@@ -65,8 +67,3 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(state => state, mapDispatchToProps)(App)
 
-// make the redirect with the token 
-{/* <Route path="/login" exact >
-{redirect("login")} */}
-{/* </Route> */}
-// Route path="/login" render={routerProps => <Login {...routerProps} />} 

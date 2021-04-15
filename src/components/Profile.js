@@ -1,13 +1,12 @@
 import React from 'react'
-// import { getUser } from '../redux/actions/userActions'
 import { connect } from 'react-redux'
  import { getToken } from '../services/localStorage'
 import { Redirect } from 'react-router-dom'
 import { setIncome } from '../redux/actions/userActions'
 import {setBudget} from '../redux/actions/userActions'
 import {setData} from '../redux/actions/userActions'
-import {updateRequest} from '../services/api'
 import SubmittedData from './SubmittedData'
+import {NavLink} from 'react-router-dom'
 
 
 
@@ -30,16 +29,13 @@ class Profile extends React.Component {
    
 
   }
-// create NAV BAR component
-// const datetime 
-// set income/budget once - edit - display
-// always display the table 
+
    handleChangeIncome= event=>{
       const income = event.target.value.replace(/[^0-9.]/g, "")
       this.setState({
         income
       })
-      // this.datetime =(this.datetime.now)
+     
     }
 
 
@@ -70,16 +66,17 @@ class Profile extends React.Component {
       this.setState({income: '', budget: '', monthly: '',yearly: ''})
     }
    
-    handleClick = () =>{
-      this.setState({
-        listOfSubmissions: this.state.listOfSubmissions
-      });
-    }
-    handleClickDelete = () =>{
-     this.setState({
-      ...this.initialState 
-     })
-    }
+    
+    // handleClick = () =>{
+    //   this.setState({
+    //     listOfSubmissions: this.state.listOfSubmissions
+    //   });
+    // }
+    // handleClickDelete = () =>{
+    //  this.setState({
+    //   ...this.initialState 
+    //  })
+    // }
 
   render() {
       console.log(getToken())
@@ -90,7 +87,8 @@ class Profile extends React.Component {
          {!getToken() ? <Redirect to="/login" /> : null}
 
          {this.props.user.username ? <h1>{this.props.user.username}'s Profile</h1> : <h1>Loading...</h1>}
-         
+         <NavLink to="/">HOME</NavLink> <NavLink to="/expenses">EXPENSES</NavLink>
+
          <form onSubmit={this.handleSubmit}>
                 <label>INCOME:
                 <textarea value={this.state.income} onChange={this.handleChangeIncome}/>
@@ -115,8 +113,8 @@ class Profile extends React.Component {
               </form> 
                  
               <SubmittedData />
-              <button onClick={this.handleClick}> 💰 </button>
-              <button onClick={this.handleClickDelete}>REMOVE</button>
+              
+              {/* <button onClick={this.handleClickDelete}>REMOVE</button> */}
           </div>
     )
   }

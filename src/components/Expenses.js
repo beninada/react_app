@@ -7,7 +7,7 @@ import { setIncome } from '../redux/actions/userActions'
 import {setBudget} from '../redux/actions/userActions'
 import { getToken } from '../services/localStorage'
 import { Redirect } from 'react-router-dom'
-
+import {NavLink} from 'react-router-dom'
 
 
 class Expenses extends Component {
@@ -19,8 +19,10 @@ class Expenses extends Component {
         showTable: false
     }
 
-    componentDidMount(){
+    componentDidMount(expense){
+        
         getExpenses().then(expenses => {
+            console.log(expense)
             for(let expense of expenses){
                 this.state.items.push({
                     typeOfExpense: expense.name,
@@ -90,7 +92,7 @@ class Expenses extends Component {
         return totalToSpend - totalSpent
     }
       
-   
+    
     
     render() {
      
@@ -98,7 +100,7 @@ class Expenses extends Component {
             
             <>
              {!getToken() ? <Redirect to="/login" /> : null}
-           
+             <NavLink to="/">HOME</NavLink> <NavLink to="/profile">PROFILE</NavLink>
             <form onSubmit={this.handleSubmit}>
                 <h1>EXPENSE TRACKER:</h1>
                 <label>TYPE OF EXPENSE:

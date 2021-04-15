@@ -36,7 +36,8 @@ class Signup extends React.Component {
     handleChangePassword = event => {
         this.setState({password: event.target.value})
     }
-        render(){
+   
+    render(){
             return (
                 <div>
         
