@@ -7,7 +7,7 @@ import Table from 'react-bootstrap/Table'
 
 class ExpensesTable extends React.Component{
 
-   
+  
       
      render(){
         const items =  this.props.items

@@ -87,7 +87,7 @@ class Profile extends React.Component {
          {!getToken() ? <Redirect to="/login" /> : null}
 
          {this.props.user.username ? <h1>{this.props.user.username}'s Profile</h1> : <h1>Loading...</h1>}
-         <NavLink to="/">HOME</NavLink> <NavLink to="/expenses">EXPENSES</NavLink>
+         <NavLink to="/expenses">EXPENSES</NavLink>
 
          <form onSubmit={this.handleSubmit}>
                 <label>INCOME:

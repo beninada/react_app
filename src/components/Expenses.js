@@ -19,10 +19,9 @@ class Expenses extends Component {
         showTable: false
     }
 
-    componentDidMount(expense){
-        
+    componentDidMount(){
         getExpenses().then(expenses => {
-            console.log(expense)
+             console.log(expense)
             for(let expense of expenses){
                 this.state.items.push({
                     typeOfExpense: expense.name,
@@ -31,6 +30,7 @@ class Expenses extends Component {
             }
         })
     }
+  
 
 
     handleChangeTypeOfExpense= event =>{
@@ -63,9 +63,9 @@ class Expenses extends Component {
             console.log(err)
             alert(err)
         })
-
-        
     }
+
+    
    
     
     handleClick = () =>{
@@ -99,8 +99,9 @@ class Expenses extends Component {
         return (
             
             <>
-             {!getToken() ? <Redirect to="/login" /> : null}
-             <NavLink to="/">HOME</NavLink> <NavLink to="/profile">PROFILE</NavLink>
+            {!getToken() ? <Redirect to="/login" /> : null}
+            {this.props.user.username ? <h1>{this.props.user.username}'s Profile</h1> : <h1>Loading...</h1>}
+              <NavLink to="/profile">PROFILE</NavLink>
             <form onSubmit={this.handleSubmit}>
                 <h1>EXPENSE TRACKER:</h1>
                 <label>TYPE OF EXPENSE:
@@ -124,7 +125,7 @@ class Expenses extends Component {
             <p>{this.props.user.budget - this.renderMoneyRemaining()}</p>
             <h1>Money Remaining!</h1>
             <p>{this.renderMoneyRemaining()}</p>
-            <button onClick={this.removeExpense}>REMOVE</button>
+            
             
             </div>
             </>
