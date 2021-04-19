@@ -21,8 +21,8 @@ class Expenses extends Component {
 
     componentDidMount(){
         getExpenses().then(expenses => {
-             console.log(expense)
             for(let expense of expenses){
+                console.log(expense)
                 this.state.items.push({
                     typeOfExpense: expense.name,
                     price: expense.amount

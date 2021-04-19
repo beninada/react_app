@@ -13,7 +13,7 @@ class ExpensesTable extends React.Component{
         const items =  this.props.items
         
        return(
-            <div id="ExpensesTable">
+            <div>
                 <Table>
                 <tbody>
                     {this.props.items.map(item => {
@@ -23,7 +23,7 @@ class ExpensesTable extends React.Component{
                                 <td>{item.typeOfExpense}</td>
                                 <th><h1>PRICE:</h1></th>
                                 <td>{item.price}</td>
-                                </tr>
+                                </tr> 
                                 
                             );
                     })}
