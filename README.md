@@ -1,7 +1,7 @@
 # EXPENSE'S TRACKER 
 
 
-#WELCOME TO THE EXPENSE TRACKER!
+# WELCOME TO THE EXPENSE TRACKER!
 
 Is it hard to keep track of your expenses? I know it is! I have created a web application that takes your finances and substract them as you add your expenses so you can keep track of what you have expended!
 
@@ -35,7 +35,7 @@ run ```npm start```
 
 YOU SHOULD BE READY TO GO! 
 
-#MIT LICENSE 
+# MIT LICENSE 
 
 ```
 Copyright <2021> <SARA GARCIA>
