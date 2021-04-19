@@ -5,7 +5,7 @@
 
 Is it hard to keep track of your expenses? I know it is! I have created a web application that takes your finances and substract them as you add your expenses so you can keep track of what you have expended!
 
-#INSTALL
+# INSTALL BACKEND
 
 Clone the backend repository
 ```git clone https://github.com/sarisgar28/react_app_backend```
@@ -25,6 +25,7 @@ open rails sever
 
 ```rails server```
 
+# INSTALL FRONEND
 Clone the frontend repository
 ``` git clone https://github.com/sarisgar28/react_app```
 
