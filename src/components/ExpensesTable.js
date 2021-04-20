@@ -35,8 +35,6 @@ class ExpensesTable extends React.Component{
         );
 
     }
-
-
 }
 
 

@@ -114,6 +114,7 @@ class Expenses extends Component {
             {!getToken() ? <Redirect to="/login" /> : null}
             {this.props.user.username ? <h1>{this.props.user.username}'s Profile</h1> : <h1>Loading...</h1>}
               <NavLink to="/profile">PROFILE</NavLink>
+            
             <form onSubmit={this.handleSubmit}>
                 <h1>EXPENSE TRACKER:</h1>
                 <label>TYPE OF EXPENSE:
@@ -124,8 +125,6 @@ class Expenses extends Component {
                 <textarea value={this.state.price} onChange={this.handleChangePrice} placeholder={this.state.price} />
                 </label>
                 <input type="submit" value="Submit"/>
-
-        
             </form>
 
             <div>
@@ -138,8 +137,6 @@ class Expenses extends Component {
             <h1>Money Remaining!</h1>
             <p>{this.renderMoneyRemaining()}</p>
             <button onClick={this.handleClickDelete}>x</button>
-            
-            
             </div>
             </>
         );
