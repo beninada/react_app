@@ -47,7 +47,7 @@ class App extends React.Component{
 
       <Route exact path="/expenses" render={() => <Expenses />} />
 
-      {/* <Route path="/expenses/expensesTable" render={() => <ExpensesTable/>}/> */}
+      <Route path="/expenses/expensesTable" render={() => <ExpensesTable/>}/>
 
       </Switch> 
       {this.props.user.username ? <button onClick={this.handleLogout}>Logout</button> : null}
