@@ -1,4 +1,4 @@
-const expenseReducer = (state = [], action) => {
+const expenseReducer = (state = {}, action) => {
     switch (action.type){
         case "SET_EXPENSE":
         return action.payload.expense || state
@@ -13,4 +13,3 @@ const expenseReducer = (state = [], action) => {
   };
 
 
-//export default expenseReducer;

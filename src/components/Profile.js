@@ -60,7 +60,7 @@ class Profile extends React.Component {
       // console.log(getToken())
     return (
      
-        <div>
+         <div>
         
           {!getToken() ? <Redirect to="/login" /> : null}
 
@@ -92,7 +92,7 @@ class Profile extends React.Component {
                   
             <SubmittedData />
         </div>
-      )
+    )
     }
   }
 
