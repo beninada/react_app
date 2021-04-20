@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import { addExpenseRequest, getExpenses } from '../services/api';
+import { addExpenseRequest, deleteExpense, getExpenses } from '../services/api';
 import ExpensesTable from './ExpensesTable'
 import SubmittedData from './SubmittedData'
 import { setIncome } from '../redux/actions/userActions'
@@ -99,11 +99,19 @@ class Expenses extends Component {
     }
 
 
-    handleClickDelete = () =>{
-      this.setState({
-      ...this.initialState 
-      })
-    }
+    // handleClickDelete = () =>{
+    //   this.setState({
+    //     this.state.items.filter(item = ()=>{
+    //     return item.expense
+    //     })
+    // })
+    //     deleteExpense({
+    //         expense: {
+    //             name: this.state.typeOfExpense,
+    //             amount: this.state.price
+    //         }
+    //   })
+    // }
     
     
     render() {
@@ -133,9 +141,9 @@ class Expenses extends Component {
             <button onClick={this.handleClick}>Show Table</button>
             <span>{this.getComponent()}</span>
             <h1>Money Spent</h1>
-            <p>{this.props.user.budget - this.renderMoneyRemaining()}</p>
+            <p>{this.props.user.budget - this.renderMoneyRemaining()|| null}</p>
             <h1>Money Remaining!</h1>
-            <p>{this.renderMoneyRemaining()}</p>
+            <p>{this.renderMoneyRemaining()|| null}</p>
             <button onClick={this.handleClickDelete}>x</button>
             </div>
             </>
