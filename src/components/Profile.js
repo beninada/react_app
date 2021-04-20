@@ -14,13 +14,13 @@ class Profile extends React.Component {
   
   
   
-  initialState = {
-    income: '',
-    budget: '',
-    yearly: true, 
-    monthly: false,
+  // initialState = {
+  //   income: '',
+  //   budget: '',
+  //   yearly: true, 
+  //   monthly: false,
    
-  }
+  // }
   state ={
     income: '',
     budget: '',

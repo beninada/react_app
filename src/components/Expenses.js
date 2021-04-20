@@ -12,6 +12,12 @@ import {NavLink} from 'react-router-dom'
 
 class Expenses extends Component {
     
+   initialState = {
+    typeOfExpense: '',
+    price: '',
+    items: []
+   }
+   
     state = {
         typeOfExpense: '',
         price: '',
@@ -53,7 +59,7 @@ class Expenses extends Component {
             }
         }).then(json => {
             const {name, amount} = json
-            let items = [...this.state.items][0]
+            // let items = [...this.state.items][0]
             this.state.items.push({
                 typeOfExpense: name,
                 price: amount
@@ -91,7 +97,13 @@ class Expenses extends Component {
         }
         return totalToSpend - totalSpent
     }
-      
+
+
+    handleClickDelete = () =>{
+      this.setState({
+      ...this.initialState 
+      })
+    }
     
     
     render() {
@@ -106,10 +118,10 @@ class Expenses extends Component {
                 <h1>EXPENSE TRACKER:</h1>
                 <label>TYPE OF EXPENSE:
                 <table items= {this.state.items}/>
-                <textarea value={this.state.typeOfExpense} onChange={this.handleChangeTypeOfExpense}placeholder={this.state.typeOfExpense} />
+                <textarea value={this.state.typeOfExpense} onChange={this.handleChangeTypeOfExpense} placeholder={this.state.typeOfExpense} />
                 </label>
                 <label>PRICE:
-                <textarea value={this.state.price} onChange={this.handleChangePrice}placeholder={this.state.price} />
+                <textarea value={this.state.price} onChange={this.handleChangePrice} placeholder={this.state.price} />
                 </label>
                 <input type="submit" value="Submit"/>
 
@@ -125,6 +137,7 @@ class Expenses extends Component {
             <p>{this.props.user.budget - this.renderMoneyRemaining()}</p>
             <h1>Money Remaining!</h1>
             <p>{this.renderMoneyRemaining()}</p>
+            <button onClick={this.handleClickDelete}>x</button>
             
             
             </div>
@@ -143,8 +156,8 @@ const mapStateToProps= state =>{
 
 const mapDispatchToProps= (dispatch) =>{
     return {
-        setIncome:  dispatch => dispatch(setIncome(this.props.listOfSubmission.income)),
-        setBudget: dispatch => dispatch(setBudget(this.props.listOfSubmission.budget))
+        setIncome:  dispatch => dispatch(setIncome(this.props.income)),
+        setBudget: dispatch => dispatch(setBudget(this.props.budget))
       }
 }
 
