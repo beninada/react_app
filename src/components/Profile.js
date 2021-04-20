@@ -12,15 +12,6 @@ import {NavLink} from 'react-router-dom'
 
 class Profile extends React.Component {
   
-  
-  
-  // initialState = {
-  //   income: '',
-  //   budget: '',
-  //   yearly: true, 
-  //   monthly: false,
-   
-  // }
   state ={
     income: '',
     budget: '',
@@ -61,64 +52,49 @@ class Profile extends React.Component {
       event.preventDefault()
       console.log(this.props.user.id)
       const {income,budget, monthly,yearly} = this.state
-      // updateRequest(this.props.user.id,income,budget,monthly,yearly)
       this.props.setData(this.props.user.id,{user: {income, budget, monthly,yearly}})
       this.setState({income: '', budget: '', monthly: '',yearly: ''})
     }
-   
-    
-    // handleClick = () =>{
-    //   this.setState({
-    //     listOfSubmissions: this.state.listOfSubmissions
-    //   });
-    // }
-    // handleClickDelete = () =>{
-    //  this.setState({
-    //   ...this.initialState 
-    //  })
-    // }
 
   render() {
-      console.log(getToken())
+      // console.log(getToken())
     return (
      
-      <div>
+        <div>
         
-         {!getToken() ? <Redirect to="/login" /> : null}
+          {!getToken() ? <Redirect to="/login" /> : null}
 
-         {this.props.user.username ? <h1>{this.props.user.username}'s Profile</h1> : <h1>Loading...</h1>}
-         <NavLink to="/expenses">EXPENSES</NavLink>
+          {this.props.user.username ? <h1>{this.props.user.username}'s Profile</h1> : <h1>Loading...</h1>}
+            <NavLink to="/expenses">EXPENSES</NavLink>
 
-         <form onSubmit={this.handleSubmit}>
-                <label>INCOME:
-                <textarea value={this.state.income} onChange={this.handleChangeIncome}/>
-                </label>
-                <label>BUDGET:
-                <textarea value={this.state.budget} onChange={this.handleChangeBudget}/>
-                </label>
-                <label> YEARLY:
-                 <select name="yearly" value={this.state.yearly}onChange={this.handleChangeYearly}>
-                   <option value= "true">true</option>
-                   <option value= "false">false</option>
-                 </select>  
-                </label>
-                <label> MONTHLY:
-                <select name="Montlhy" value={this.state.monthly}onChange={this.handleChangeMonthly}>
-                   <option value= "true">true</option>
-                   <option value= "false">false</option>
-                 </select>  
-                </label>
-               
-                <input type="submit" value="SUBMIT"/>
-              </form> 
-                 
-              <SubmittedData />
+            <form onSubmit={this.handleSubmit}>
+              <label>INCOME:
+              <textarea value={this.state.income} onChange={this.handleChangeIncome}/>
+              </label>
+              <label>BUDGET:
+              <textarea value={this.state.budget} onChange={this.handleChangeBudget}/>
+              </label>
+              <label> YEARLY:
+              <select name="yearly" value={this.state.yearly}onChange={this.handleChangeYearly}>
+                <option value= "true">true</option>
+                <option value= "false">false</option>
+              </select>  
+              </label>
+              <label> MONTHLY:
+              <select name="Montlhy" value={this.state.monthly}onChange={this.handleChangeMonthly}>
+                  <option value= "true">true</option>
+                  <option value= "false">false</option>
+                </select>  
+              </label>
               
-              {/* <button onClick={this.handleClickDelete}>REMOVE</button> */}
-          </div>
-    )
+              <input type="submit" value="SUBMIT"/>
+            </form> 
+                  
+            <SubmittedData />
+        </div>
+      )
+    }
   }
-}
 
 const mapStateToProps = state => {
   const {user,expenses, submittedData} = state
