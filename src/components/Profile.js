@@ -58,6 +58,7 @@ class Profile extends React.Component {
 
   render() {
       // console.log(getToken())
+      const {income, budget, yearly, monthly} = this.state
     return (
      
          <div>
@@ -69,19 +70,19 @@ class Profile extends React.Component {
 
             <form onSubmit={this.handleSubmit}>
               <label>INCOME:
-              <textarea value={this.state.income} onChange={this.handleChangeIncome}/>
+              <textarea value={income} onChange={this.handleChangeIncome}/>
               </label>
               <label>BUDGET:
-              <textarea value={this.state.budget} onChange={this.handleChangeBudget}/>
+              <textarea value={budget} onChange={this.handleChangeBudget}/>
               </label>
               <label> YEARLY:
-              <select name="yearly" value={this.state.yearly}onChange={this.handleChangeYearly}>
+              <select name="yearly" value={yearly}onChange={this.handleChangeYearly}>
                 <option value= "true">true</option>
                 <option value= "false">false</option>
               </select>  
               </label>
               <label> MONTHLY:
-              <select name="Montlhy" value={this.state.monthly}onChange={this.handleChangeMonthly}>
+              <select name="Montlhy" value={monthly}onChange={this.handleChangeMonthly}>
                   <option value= "true">true</option>
                   <option value= "false">false</option>
                 </select>  
