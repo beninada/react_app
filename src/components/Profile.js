@@ -61,7 +61,7 @@ class Profile extends React.Component {
       const {income, budget, yearly, monthly} = this.state
     return (
      
-         <div>
+      <div>
         
           {!getToken() ? <Redirect to="/login" /> : null}
 
@@ -70,32 +70,32 @@ class Profile extends React.Component {
 
             <form onSubmit={this.handleSubmit}>
               <label>INCOME:
-              <textarea value={income} onChange={this.handleChangeIncome}/>
+               <textarea value={income} onChange={this.handleChangeIncome}/>
               </label>
               <label>BUDGET:
-              <textarea value={budget} onChange={this.handleChangeBudget}/>
+                <textarea value={budget} onChange={this.handleChangeBudget}/>
               </label>
               <label> YEARLY:
-              <select name="yearly" value={yearly}onChange={this.handleChangeYearly}>
-                <option value= "true">true</option>
-                <option value= "false">false</option>
-              </select>  
-              </label>
-              <label> MONTHLY:
-              <select name="Montlhy" value={monthly}onChange={this.handleChangeMonthly}>
+                <select name="yearly" value={yearly}onChange={this.handleChangeYearly}>
                   <option value= "true">true</option>
                   <option value= "false">false</option>
                 </select>  
               </label>
-              
+              <label> MONTHLY:
+               <select name="Montlhy" value={monthly}onChange={this.handleChangeMonthly}>
+                  <option value= "true">true</option>
+                  <option value= "false">false</option>
+                </select>  
+              </label>
               <input type="submit" value="SUBMIT"/>
             </form> 
                   
-            <SubmittedData />
-        </div>
+        <SubmittedData />
+      
+      </div>
     )
-    }
   }
+}
 
 const mapStateToProps = state => {
   const {user,expenses, submittedData} = state
