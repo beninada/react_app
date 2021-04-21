@@ -10,6 +10,7 @@ import Signup from "./components/Signup"
  import Profile from "./components/Profile"
  import Expenses from "./components/Expenses"
  import ExpensesTable from "./components/ExpensesTable"
+
 // CSS
 import './App.css';
 
@@ -48,6 +49,7 @@ class App extends React.Component{
       <Route exact path="/expenses" render={() => <Expenses />} />
 
       <Route path="/expenses/expensesTable" render={() => <ExpensesTable/>}/>
+      
 
       </Switch> 
       {this.props.user.username ? <button onClick={this.handleLogout}>Logout</button> : null}

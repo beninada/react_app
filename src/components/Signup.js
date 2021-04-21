@@ -9,7 +9,7 @@ class Signup extends React.Component {
         username: '',
         password: '',
         message: ''
-      }
+    }
     
     handleSubmit = event => {
     event.preventDefault()
