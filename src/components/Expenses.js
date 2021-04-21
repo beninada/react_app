@@ -101,7 +101,7 @@ class Expenses extends Component {
 
     // handleClickDelete = () =>{
     //   this.setState({
-    //     this.state.items.filter(item = ()=>{
+    //    items.filter(item = ()=>{
     //     return item.expense
     //     })
     // })
@@ -115,7 +115,7 @@ class Expenses extends Component {
     
     
     render() {
-     
+        const {items, typeOfExpense, price} = this.state
         return (
             
             <>
@@ -126,11 +126,11 @@ class Expenses extends Component {
             <form onSubmit={this.handleSubmit}>
                 <h1>EXPENSE TRACKER:</h1>
                 <label>TYPE OF EXPENSE:
-                <table items= {this.state.items}/>
-                <textarea value={this.state.typeOfExpense} onChange={this.handleChangeTypeOfExpense} placeholder={this.state.typeOfExpense} />
+                <table items= {items}/>
+                <textarea value={typeOfExpense} onChange={this.handleChangeTypeOfExpense} placeholder={typeOfExpense} />
                 </label>
                 <label>PRICE:
-                <textarea value={this.state.price} onChange={this.handleChangePrice} placeholder={this.state.price} />
+                <textarea value={price} onChange={this.handleChangePrice} placeholder={price} />
                 </label>
                 <input type="submit" value="Submit"/>
             </form>
