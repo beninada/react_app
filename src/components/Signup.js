@@ -38,24 +38,25 @@ class Signup extends React.Component {
     }
    
     render(){
+        const {username,password,message} = this.state
             return (
                 <div>
         
                 <form onSubmit={this.handleSubmit}>
         
-                    <p style={{color: 'pink'}}>{this.state.message}</p>
+                    <p style={{color: 'pink'}}>{message}</p>
                     <h3>SIGN UP:</h3>
                     <input type="text"
                     name="username"
                     onChange={this.handleChangeUsername}
                     placeholder="Username"
-                    value={this.state.username}
+                    value={username}
                     />
         
                     <input type="password"
                     onChange={this.handleChangePassword}
                     placeholder="Password"
-                    value={this.state.password}
+                    value={password}
                     />
         
                     <input type="submit"

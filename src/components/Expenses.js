@@ -106,18 +106,20 @@ class Expenses extends Component {
     //     })
     // })
     //     deleteExpense({
+         // maybe use expense.id?
     //         expense: {
     //             name: this.state.typeOfExpense,
     //             amount: this.state.price
     //         }
     //   })
     // }
+   
     
     
     render() {
+       
         const {items, typeOfExpense, price} = this.state
         return (
-            
             <>
             {!getToken() ? <Redirect to="/login" /> : null}
              {this.props.user.username ? <h1>{this.props.user.username}'s Profile</h1> : <h1>Loading...</h1>}
