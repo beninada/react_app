@@ -1,4 +1,4 @@
-export default (state = {}, action) =>  {
+const userReducer = (state = {}, action) =>  {
     switch (action.type) {
       case "SET_USER":
         return action.payload || {}
@@ -15,4 +15,5 @@ export default (state = {}, action) =>  {
       default:
         return state
   }
-}
+};
+export default userReducer

@@ -1,6 +1,6 @@
 import  { profileRequest } from '../../services/api'
 import {updateRequest} from '../../services/api'
-import {deleteUserData} from '../../services/api'
+// import {deleteUserData} from '../../services/api'
 
 
 
@@ -38,10 +38,10 @@ export const setBudget = (user) =>{
   }
 }
 
-export const deleteUser = () =>{
-  return (dispatch) => {
-    deleteUserData().then(response =>{
-      dispatch({type: 'DELETE_DATA', payload: response})
-    })
-  }
-}
+// export const deleteUser = () =>{
+//   return (dispatch) => {
+//     deleteUserData().then(response =>{
+//       dispatch({type: 'DELETE_DATA', payload: response})
+//     })
+//   }
+// }

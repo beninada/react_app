@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import { addExpenseRequest, deleteExpense, getExpenses } from '../services/api';
+import { addExpenseRequest,getExpenses } from '../services/api';
+// deleteExpense
 import ExpensesTable from './ExpensesTable'
 import SubmittedData from './SubmittedData'
 import { setIncome } from '../redux/actions/userActions'
