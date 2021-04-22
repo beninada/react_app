@@ -7,6 +7,7 @@ import Table from 'react-bootstrap/Table'
 
 class ExpensesTable extends React.Component{
 
+
    
   
       
@@ -15,16 +16,20 @@ class ExpensesTable extends React.Component{
         <div>
             <Table>
             <tbody>
-                {this.props.items.map(item => {
+                {this.props.items.map((item) => {
                     return (
+                        <>
                         <tr key={item.id}>
                         <th><h1>TYPE OF EXPENSE:</h1></th>
                         <td>{item.typeOfExpense}</td>
                         <th><h1>PRICE:</h1></th>
                         <td>{item.price}</td>
                         </tr> 
+                        {/* <button onClick={() =>this.props.onDelete(item)}>X</button> */}
+                        </>
                     
                     );}
+                    
                 )}
 
             </tbody>

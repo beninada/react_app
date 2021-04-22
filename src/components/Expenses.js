@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import { addExpenseRequest,getExpenses } from '../services/api';
-// deleteExpense
+import { addExpenseRequest,getExpenses} from '../services/api'
+// deleteExpense 
 import ExpensesTable from './ExpensesTable'
 import SubmittedData from './SubmittedData'
 import { setIncome } from '../redux/actions/userActions'
@@ -11,14 +11,9 @@ import { Redirect } from 'react-router-dom'
 import Navbar from "./Navbar"
 
 
+
 class Expenses extends Component {
     
-   initialState = {
-    typeOfExpense: '',
-    price: '',
-    items: []
-   }
-   
     state = {
         typeOfExpense: '',
         price: '',
@@ -29,7 +24,7 @@ class Expenses extends Component {
     componentDidMount(){
         getExpenses().then(expenses => {
             for(let expense of expenses){
-                console.log(expense)
+                // console.log(expense)
                 this.state.items.push({
                     typeOfExpense: expense.name,
                     price: expense.amount
@@ -83,8 +78,8 @@ class Expenses extends Component {
          
     getComponent = () =>{
         if (this.state.showTable){
-            return <ExpensesTable items = {this.state.items}/>;
-            
+            return <ExpensesTable items = {this.state.items} onDelete={this.handleClickDelete}/>;
+            // call handleclick =delete 
         }else {
             return null;
         }
@@ -100,19 +95,14 @@ class Expenses extends Component {
     }
 
 
-    // handleClickDelete = () =>{
-    //   this.setState({
-    //    items.filter(item = ()=>{
-    //     return item.expense
-    //     })
-    // })
-    //     deleteExpense({
-         // maybe use expense.id?
-    //         expense: {
-    //             name: this.state.typeOfExpense,
-    //             amount: this.state.price
-    //         }
-    //   })
+    // handleClickDelete = (itemToDelete) =>{
+    //     // debugger
+    //      const newItems = this.state.items.filter(item => {
+    //       return item.id !== item.itemToDelete.id
+    //       })
+    //       this.setState({items: newItems})
+    //     //   console.log(itemToDelete,"item to delete")
+    //       deleteExpense(itemToDelete.id)
     // }
    
     
@@ -147,7 +137,7 @@ class Expenses extends Component {
             <p>{this.props.user.budget - this.renderMoneyRemaining()|| null}</p>
             <h1>Money Remaining!</h1>
             <p>{this.renderMoneyRemaining()|| null}</p>
-            <button onClick={this.handleClickDelete}>x</button>
+            {/* <button onClick={this.handleClickDelete}>x</button> */}
             </div>
             </>
         );
@@ -166,6 +156,7 @@ const mapDispatchToProps= (dispatch) =>{
     return {
         setIncome:  dispatch => dispatch(setIncome(this.props.income)),
         setBudget: dispatch => dispatch(setBudget(this.props.budget))
+
       }
 }
 

@@ -75,5 +75,6 @@ const mapDispatchToProps = dispatch => {
     setUser: user => dispatch({type: 'SET_USER', payload: user})
   }
 }
+// comes from userReducer/UserActions
 
 export default connect(state => state, mapDispatchToProps)(Login)

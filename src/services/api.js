@@ -84,6 +84,7 @@ export function profileRequest() {
 
 
 export function deleteExpense(expenseId){
+  console.log(expenseId)
   return fetch(URL + `expenses/${expenseId}`,{
     method: "DELETE",
     headers: headers(),
