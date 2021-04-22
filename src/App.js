@@ -7,9 +7,10 @@ import { getUser } from './redux/actions/userActions'
 import Home from "./components/Home"
 import Login from "./components/Login"
 import Signup from "./components/Signup"
- import Profile from "./components/Profile"
- import Expenses from "./components/Expenses"
- import ExpensesTable from "./components/ExpensesTable"
+import Profile from "./components/Profile"
+import Expenses from "./components/Expenses"
+import ExpensesTable from "./components/ExpensesTable"
+import Navbar from "./components/Navbar"
 
 // CSS
 import './App.css';
@@ -35,7 +36,7 @@ class App extends React.Component{
     return (
       <Router>
       <div className="App">
-     
+      <Navbar/>
       <Switch>
 
       <Route exact path="/" render={routerProps => <Home {...routerProps}/>} />

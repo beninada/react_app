@@ -6,7 +6,7 @@ import { setIncome } from '../redux/actions/userActions'
 import {setBudget} from '../redux/actions/userActions'
 import {setData} from '../redux/actions/userActions'
 import SubmittedData from './SubmittedData'
-import {NavLink} from 'react-router-dom'
+
 
 
 
@@ -66,7 +66,7 @@ class Profile extends React.Component {
           {!getToken() ? <Redirect to="/login" /> : null}
 
           {this.props.user.username ? <h1>{this.props.user.username}'s Profile</h1> : <h1>Loading...</h1>}
-            <NavLink to="/expenses">EXPENSES</NavLink>
+            {/* <NavLink to="/expenses">EXPENSES</NavLink> */}
 
             <form onSubmit={this.handleSubmit}>
               <label>INCOME:

@@ -7,7 +7,7 @@ import { setIncome } from '../redux/actions/userActions'
 import {setBudget} from '../redux/actions/userActions'
 import { getToken } from '../services/localStorage'
 import { Redirect } from 'react-router-dom'
-import {NavLink} from 'react-router-dom'
+
 
 
 class Expenses extends Component {
@@ -124,7 +124,6 @@ class Expenses extends Component {
             {!getToken() ? <Redirect to="/login" /> : null}
              {this.props.user.username ? <h1>{this.props.user.username}'s Profile</h1> : <h1>Loading...</h1>}
             
-            <NavLink to="/profile">PROFILE</NavLink>
             
             <form onSubmit={this.handleSubmit}>
                 <h1>EXPENSE TRACKER:</h1>
