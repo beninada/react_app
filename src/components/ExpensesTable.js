@@ -25,7 +25,7 @@ class ExpensesTable extends React.Component{
                         <th><h1>PRICE:</h1></th>
                         <td>{item.price}</td>
                         </tr> 
-                        {/* <button onClick={() =>this.props.onDelete(item)}>X</button> */}
+                        <button onClick={() =>this.props.onDelete(item)}>X</button>
                         </>
                     
                     );}

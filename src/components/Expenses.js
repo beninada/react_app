@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import { addExpenseRequest,getExpenses} from '../services/api'
+import { addExpenseRequest,getExpenses,deleteExpense } from '../services/api'
 // deleteExpense 
 import ExpensesTable from './ExpensesTable'
 import SubmittedData from './SubmittedData'
@@ -27,7 +27,8 @@ class Expenses extends Component {
                 // console.log(expense)
                 this.state.items.push({
                     typeOfExpense: expense.name,
-                    price: expense.amount
+                    price: expense.amount, 
+                    id: expense.id
                 })
             }
         })
@@ -54,11 +55,12 @@ class Expenses extends Component {
                 amount: this.state.price
             }
         }).then(json => {
-            const {name, amount} = json
+            const {name, amount, id} = json
             // let items = [...this.state.items][0]
             this.state.items.push({
                 typeOfExpense: name,
-                price: amount
+                price: amount,
+                id
             })
             this.setState({typeOfExpense:'',price:''})
         }).catch(err => {
@@ -95,15 +97,18 @@ class Expenses extends Component {
     }
 
 
-    // handleClickDelete = (itemToDelete) =>{
-    //     // debugger
-    //      const newItems = this.state.items.filter(item => {
-    //       return item.id !== item.itemToDelete.id
-    //       })
-    //       this.setState({items: newItems})
-    //     //   console.log(itemToDelete,"item to delete")
-    //       deleteExpense(itemToDelete.id)
-    // }
+    handleClickDelete = (itemToDelete) =>{
+        // debugger
+        console.log(itemToDelete)
+        console.log(this.state.items)
+         const newItems = this.state.items.filter(item => {
+          return item.id !== itemToDelete.id
+          })
+          this.setState({items: newItems})
+        //   console.log(itemToDelete,"item to delete")
+        console.log(itemToDelete)
+        deleteExpense(itemToDelete.id)
+    }
    
     
     
