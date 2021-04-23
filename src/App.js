@@ -12,12 +12,15 @@ import Expenses from "./components/Expenses"
 import ExpensesTable from "./components/ExpensesTable"
 
 
+
 // CSS
 import './App.css';
 
 
+
 // SERVICES
 import { clearToken} from './services/localStorage'
+
 
 
 class App extends React.Component{
@@ -36,7 +39,7 @@ class App extends React.Component{
     return (
       <Router>
       <div className="App">
-   
+        
       <Switch>
 
       <Route exact path="/" render={routerProps => <Home {...routerProps}/>} />

@@ -32,7 +32,7 @@ a  {
 
 body {
   font-family: 'Nanum Myeongjo', serif;
-  background-color: rgb(141, 178, 247);
+  background-color: white;
 }
 
 .App-header {
@@ -184,3 +184,4 @@ table {
   padding: 20px;
   list-style: none;
 }
+

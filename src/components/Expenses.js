@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import { addExpenseRequest,getExpenses,deleteExpense } from '../services/api'
-// deleteExpense 
 import ExpensesTable from './ExpensesTable'
 import SubmittedData from './SubmittedData'
 import { setIncome } from '../redux/actions/userActions'
@@ -98,15 +97,11 @@ class Expenses extends Component {
 
 
     handleClickDelete = (itemToDelete) =>{
-        // debugger
-        console.log(itemToDelete)
-        console.log(this.state.items)
+
          const newItems = this.state.items.filter(item => {
           return item.id !== itemToDelete.id
           })
           this.setState({items: newItems})
-        //   console.log(itemToDelete,"item to delete")
-        console.log(itemToDelete)
         deleteExpense(itemToDelete.id)
     }
    
