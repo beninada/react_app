@@ -51,7 +51,7 @@ class Profile extends React.Component {
     handleSubmit = (event) =>{
       event.preventDefault()
       console.log(this.props.user.id)
-      const {income,budget, monthly,yearly} = this.state
+      const {income, budget, monthly, yearly} = this.state
       this.props.setData(this.props.user.id,{user: {income, budget, monthly,yearly}})
       this.setState({income: '', budget: '', monthly: '',yearly: ''})
     }

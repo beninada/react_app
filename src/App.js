@@ -9,7 +9,8 @@ import Login from "./components/Login"
 import Signup from "./components/Signup"
 import Profile from "./components/Profile"
 import Expenses from "./components/Expenses"
-import ExpensesTable from "./components/ExpensesTable"
+
+
 
 
 
@@ -52,7 +53,7 @@ class App extends React.Component{
 
       <Route exact path="/expenses" render={() => <Expenses />} />
 
-      <Route path="/expenses/expenseId" render={() => <ExpensesTable/>}/>
+    
       
 
       </Switch> 

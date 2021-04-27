@@ -1,7 +1,5 @@
 const URL = 'http://localhost:3000/'
 
-
-
 const parseJSON = res => res.json()
 
 const authHeaders = () => ({
@@ -37,15 +35,16 @@ export function signupRequest(credentials) {
   .then(parseJSON)
 }
 
+// PROFILE REQUEST
 export function profileRequest() {
-    console.log(authHeaders())
-    return fetch(URL + 'profile', {
-      headers: authHeaders()
-    })
-    .then(parseJSON)
-  }
+  console.log(authHeaders())
+  return fetch(URL + 'profile', {
+    headers: authHeaders()
+  })
+  .then(parseJSON)
+}
 
-  // UPDATE 
+    // UPDATE 
   export function updateRequest(user_id, user){
     return fetch(URL + `users/${user_id}`,{
       method: "PATCH",
@@ -54,8 +53,9 @@ export function profileRequest() {
     })
     .then(parseJSON)
   }
+  // DELETE
   export function deleteUserData(){
-    return fetch(URL + `users`,{
+    return fetch(URL + 'users',{
       method: "DELETE",
       headers: headers(),
       body: JSON.stringify()
@@ -72,7 +72,7 @@ export function profileRequest() {
   }
  
   export function addExpenseRequest(expenseData){
-    return fetch(URL + `expenses`,{
+    return fetch(URL + 'expenses',{
       method: "POST",
       headers: headers(),
       body: JSON.stringify(expenseData)

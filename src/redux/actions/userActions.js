@@ -38,10 +38,3 @@ export const setBudget = (user) =>{
   }
 }
 
-// export const deleteUser = () =>{
-//   return (dispatch) => {
-//     deleteUserData().then(response =>{
-//       dispatch({type: 'DELETE_DATA', payload: response})
-//     })
-//   }
-// }

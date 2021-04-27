@@ -8,6 +8,7 @@ import {setBudget} from '../redux/actions/userActions'
 import { getToken } from '../services/localStorage'
 import { Redirect } from 'react-router-dom'
 import Navbar from "./Navbar"
+import ClickMe from './ClickMe'
 
 
 
@@ -51,11 +52,11 @@ class Expenses extends Component {
         addExpenseRequest({
             expense: {
                 name: this.state.typeOfExpense,
-                amount: this.state.price
+                amount: this.state.price,
+                
             }
         }).then(json => {
             const {name, amount, id} = json
-            // let items = [...this.state.items][0]
             this.state.items.push({
                 typeOfExpense: name,
                 price: amount,
@@ -112,10 +113,12 @@ class Expenses extends Component {
         const {items, typeOfExpense, price} = this.state
         return (
             <>
+          
             {!getToken() ? <Redirect to="/login" /> : null}
              {this.props.user.username ? <h1>{this.props.user.username}'s Expenses</h1> : <h1>Loading...</h1>}
             <Navbar/>
-            
+            <ClickMe />
+           
             <form onSubmit={this.handleSubmit}>
                 <h1>EXPENSE TRACKER:</h1>
                 <label>TYPE OF EXPENSE:
@@ -130,15 +133,15 @@ class Expenses extends Component {
 
             <div>
                 <SubmittedData/>
-
+                
             <button onClick={this.handleClick}>Show Table</button>
             <span>{this.getComponent()}</span>
             <h1>Money Spent</h1>
             <p>{this.props.user.budget - this.renderMoneyRemaining()|| null}</p>
             <h1>Money Remaining!</h1>
             <p>{this.renderMoneyRemaining()|| null}</p>
-            {/* <button onClick={this.handleClickDelete}>x</button> */}
             </div>
+            
             </>
         );
     }
@@ -152,6 +155,7 @@ const mapStateToProps= state =>{
     }
 }
 
+// userActions
 const mapDispatchToProps= (dispatch) =>{
     return {
         setIncome:  dispatch => dispatch(setIncome(this.props.income)),
