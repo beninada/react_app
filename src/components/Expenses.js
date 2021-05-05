@@ -117,7 +117,7 @@ class Expenses extends Component {
             {!getToken() ? <Redirect to="/login" /> : null}
              {this.props.user.username ? <h1>{this.props.user.username}'s Expenses</h1> : <h1>Loading...</h1>}
             <Navbar/>
-            <ClickMe />
+            {/* <ClickMe /> */}
            
             <form onSubmit={this.handleSubmit}>
                 <h1>EXPENSE TRACKER:</h1>
